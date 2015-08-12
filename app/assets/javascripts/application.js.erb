@@ -13,7 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 
 // my add
-//= require bootstrap-sprockets
+//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
+//= require react/react
+<% if Rails.env.development?
+    require_asset 'react/JSXTransformer'
+    end %>
+
+//= require_tree .
+
+
