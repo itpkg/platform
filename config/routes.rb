@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   #----------- personal
-  get 'personal'=>'personal#index'
+  %w(logs site status).each { |a| get "personal/#{a}" }
   #----------- site
-  %w(about_us help).each {|a| get a => "home##{a}"}
+  %w(about_us help).each { |a| get a => "home##{a}" }
 
   root 'home#index'
   devise_for :users

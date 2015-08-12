@@ -15,6 +15,9 @@ en:
       sign_in_or_up: 'Sign in/up'
       profile: Profile
       dashboard: Dashboard
+      logs: Logs
+      status: Status
+      site_info: Site info
   site:
     title: IT-PACKAGE
     copyright_html: '&copy; 2015 IT-PACKAGE, Inc. &middot;<a href="https://github.com/itpkg" target="_blank">Terms</a>'

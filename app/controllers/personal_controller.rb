@@ -1,5 +1,12 @@
 class PersonalController < ApplicationController
-  def index
+  layout 'personal'
+
+  def logs
 
   end
+
+  def status
+
+  end
+
 end

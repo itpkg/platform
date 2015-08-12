@@ -15,6 +15,9 @@ zh-CN:
       sign_in_or_up: 注册/登录
       profile: 个人信息
       dashboard: 控制面板
+      logs: 日志列表
+      status: 用户状态
+      site_info: 站点信息
   site:
     title: IT解决方案包
     copyright_html: '&copy; 2015 IT包, Inc. &middot;<a href="https://github.com/itpkg" target="_blank">团队</a>'
