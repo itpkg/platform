@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= t 'site.title' %></title>
+  <title><%= site_info 'title' %></title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -21,7 +21,7 @@
     </p>
 
     <p>
-      <%= t 'site.copyright_html' %>
+      <%= site_info 'copyright',true %>
     </p>
   </footer>
 </div>
