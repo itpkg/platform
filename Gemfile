@@ -77,3 +77,5 @@ gem 'mini_magick'
 gem 'fog'
 gem 'fog-local'
 gem 'spreadsheet'
+
+gem 'dalli'

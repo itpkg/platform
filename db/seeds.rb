@@ -9,5 +9,6 @@
 root = User.new
 root.email = "root@#{ENV['ITPKG_DOMAIN']}"
 root.password = "changeme"
+root.skip_confirmation!
 root.save
 root.add_role 'root'
