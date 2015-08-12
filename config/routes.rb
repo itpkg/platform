@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  #----------- personal
+  get 'personal'=>'personal#index'
+  #----------- site
+  %w(about_us help).each {|a| get a => "home##{a}"}
+
+  root 'home#index'
   devise_for :users
+  mount Email::Engine, at: '/email'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

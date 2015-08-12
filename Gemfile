@@ -79,3 +79,5 @@ gem 'fog-local'
 gem 'spreadsheet'
 
 gem 'dalli'
+
+gem 'email', path: '../email' #github:'itpkg/email'

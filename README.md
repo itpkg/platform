@@ -23,3 +23,11 @@ IT-PACKAGE(ror version)
     firefox https://localhost  # open in web browser
     ssh -p 2222 root@localhost # password is changeme
 
+
+## Notes
+
+### rails
+    rails plugin new NAME --mountable
+    rake railties:install:migrations
+
+

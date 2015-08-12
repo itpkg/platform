@@ -11,3 +11,5 @@ Rails.application.config.assets.precompile << %r(bootstrap-sass/assets/fonts/boo
 if Rails.env.development?
   Rails.application.config.assets.precompile += %w( react/JSXTransformer.js )
 end
+
+Rails.application.config.assets.precompile += %w(us cn).map {|img|"famfamfam-flags/dist/png/#{img}.png"}

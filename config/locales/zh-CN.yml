@@ -1,0 +1,14 @@
+zh-CN:
+  back_to_top: 回到顶部
+  titles:
+    home: 首页
+    help: 帮助文档
+    about_us: 关于我们
+    personal:
+      welcome: "欢迎你, %{name}"
+      sign_out: 安全退出
+      sign_in_or_up: 注册/登录
+      index: 参数设置
+  site:
+    title: IT包
+    copyright_html: '&copy; 2015 IT包, Inc. &middot;<a href="https://github.com/itpkg" target="_blank">团队</a>'
