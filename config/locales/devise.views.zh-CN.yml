@@ -10,16 +10,17 @@ zh-CN:
         password: 密码
         password_confirmation: 密码确认
         current_password: 当前密码
+        remember_me: 记住我
   devise:
     confirmations:
       new:
-        resend_confirmation_instructions: 重新发送确认指示
+        resend_confirmation_instructions: 重新发送确认邮件
     mailer:
       confirmation_instructions:
         action: 确认我的帐户
         greeting: 欢迎 %{recipient}!
         instruction: ! '您可以通过下面的链接确认您的帐户的电子邮件:'
-        subject: 确认指示
+        subject: 确认邮件
       reset_password_instructions:
         action: 更改我的密码
         greeting: 你好 %{recipient}!
@@ -58,12 +59,12 @@ zh-CN:
         sign_in: 登录
     shared:
       links:
-        didn_t_receive_confirmation_instructions: 没有收到确认指令？
-        didn_t_receive_unlock_instructions: 没有收到解锁指令？
+        didn_t_receive_confirmation_instructions: 没有收到确认邮件？
+        didn_t_receive_unlock_instructions: 没有收到解锁邮件？
         forgot_your_password: 忘记密码？
         sign_in: 登录
         sign_in_with_provider:  用 %{provider} 登录
         sign_up: 注册
     unlocks:
       new:
-        resend_unlock_instructions: 重发解锁指示
+        resend_unlock_instructions: 重发解锁邮件
