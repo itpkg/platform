@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 root = User.new
+root.username = 'root'
 root.email = "root@#{ENV['ITPKG_DOMAIN']}"
 root.password = "changeme"
 root.skip_confirmation!
