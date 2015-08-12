@@ -1,5 +1,10 @@
 en:
   back_to_top: Back to top
+  buttons:
+    back: Back
+  status:
+    success: Success
+    failed: Failed
   titles:
     home: Home
     help: Help
@@ -8,7 +13,8 @@ en:
       welcome: "Welcome, %{name}"
       sign_out: Sign out
       sign_in_or_up: 'Sign in/up'
-      index: Setting
+      profile: Profile
+      dashboard: Dashboard
   site:
     title: IT-PACKAGE
     copyright_html: '&copy; 2015 IT-PACKAGE, Inc. &middot;<a href="https://github.com/itpkg" target="_blank">Terms</a>'

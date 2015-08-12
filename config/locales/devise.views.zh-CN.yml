@@ -9,6 +9,7 @@ zh-CN:
         username: 用户名
         password: 密码
         password_confirmation: 密码确认
+        current_password: 当前密码
   devise:
     confirmations:
       new:
@@ -45,6 +46,7 @@ zh-CN:
       edit:
         are_you_sure: 你确定吗？
         cancel_my_account: 取消我的帐户
+        unhappy: 不开心?
         leave_blank_if_you_don_t_want_to_change_it: 你不想去改变它，不需要填写
         title: 修改 %{resource}
         we_need_your_current_password_to_confirm_your_changes: 我们需要您的当前密码以确认您的更改

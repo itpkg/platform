@@ -4,7 +4,7 @@ module ApplicationHelper
     links = [
     ]
     if user
-      links << {url:personal_path, title:t('titles.personal.index')}
+
     end
     links
   end
