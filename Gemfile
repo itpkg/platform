@@ -29,8 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,3 +42,39 @@ group :development, :test do
   gem 'spring'
 end
 
+#--------------- my add -------------------------
+# Use Capistrano for deployment
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
+end
+
+gem 'puma'
+
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'devise-async'
+gem 'cancancan'
+gem 'rolify'
+gem 'attr_encrypted'
+gem 'omniauth-google-oauth2'
+
+gem 'rails-i18n'
+gem 'redcarpet'
+gem 'wikicloth'
+gem 'github-markup'
+
+gem 'sinatra', require: nil
+gem 'sidekiq-limit_fetch'
+gem 'sidekiq'
+
+gem 'rails-settings-cached'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'fog-local'
+gem 'spreadsheet'

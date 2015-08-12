@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+root = User.new
+root.email = "root@#{ENV['ITPKG_DOMAIN']}"
+root.password = "changeme"
+root.save
+root.add_role 'root'
