@@ -1,6 +1,14 @@
 <div class="row">
   <div class="col-md-10">
     <fieldset>
+      <legend><%= t('titles.personal.site.favicon') %></legend>
+      <%= bootstrap_form_tag url: admin_favicon_path, multipart: true do |f| %>
+          <%= f.file_field :favicon %>
+          <%= f.primary t('buttons.upload') %>
+      <% end %>
+    </fieldset>
+    <br/>
+    <fieldset>
       <legend><%= t('titles.personal.site.base') %></legend>
       <%= bootstrap_form_tag url: admin_info_path, html: {id: 'base'} do |f| %>
           <%= f.text_field :title, value: t('site.title') %>

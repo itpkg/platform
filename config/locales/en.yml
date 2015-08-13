@@ -12,6 +12,8 @@ en:
       http_422: 422.html
       http_404: 404.html
       http_500: 500.html
+  errors:
+    bad_type: Bad type [%{type}]
   buttons:
     back: Back
     save: Save
@@ -21,6 +23,7 @@ en:
     view: View
     remove: Remove
     edit: Edit
+    upload: Upload
   status:
     success: Success
     failed: Failed
@@ -45,6 +48,7 @@ en:
           recaptcha: reCAPTCHA
         info: Site info
         base: Base info
+        favicon: favicon
         status: Status
         errors:
           index: Error pages

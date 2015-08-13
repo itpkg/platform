@@ -17,6 +17,9 @@ zh-CN:
       http_422: 422.html
       http_404: 404.html
       http_500: 500.html
+      favicon: 图标
+  errors:
+    bad_type: 错误类型 [%{type}]
   buttons:
     back: 返回
     save: 保存
@@ -26,6 +29,7 @@ zh-CN:
     view: 查看
     remove: 删除
     edit: 编辑
+    upload: 上传
   status:
     success: 操作成功
     failed: 出错啦
@@ -46,6 +50,7 @@ zh-CN:
         index: 站点设置
         info: 站点信息
         base: 基本信息
+        favicon: 图标
         keys:
           index: 密钥管理
           youtube: Youtube

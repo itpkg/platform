@@ -2,6 +2,24 @@ class AdminController < ApplicationController
   before_filter :check_permissions
   layout false
 
+  def favicon
+    if request.method == 'POST'
+      fav = params[:favicon]
+      if fav
+        if %w(image/x-icon image/png).include?(fav.content_type)
+          Setting.favicon = {body: fav.read, type: fav.content_type}
+          flash[:notice] = t 'status.success'
+        else
+          flash[:alert] = t 'errors.bad_type', type: fav.content_type
+        end
+      else
+        flash[:alert] = t 'status.failed'
+      end
+
+      redirect_to personal_site_path
+    end
+  end
+
   def errors
     if request.method == 'POST'
       %w(http_404 http_422 http_500).each do |k|
@@ -13,6 +31,7 @@ class AdminController < ApplicationController
       render json: {ok: true, message: t('status.success')}
     end
   end
+
   def keys
     if request.method == 'POST'
       %w(youtube_key recaptcha_site_key recaptcha_secret_key).each do |k|

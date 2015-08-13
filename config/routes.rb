@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   #----------- personal
   %w(logs site status).each { |a| get "personal/#{a}" }
+
+  post 'admin/favicon'
   %w(info keys seo errors).each do |a|
     get "admin/#{a}"
     post "admin/#{a}"
