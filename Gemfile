@@ -81,3 +81,4 @@ gem 'spreadsheet'
 gem 'dalli'
 
 gem 'email', path: '../email' #github:'itpkg/email'
+gem 'cms', path: '../cms' #github:'itpkg/cms'
