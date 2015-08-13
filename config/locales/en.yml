@@ -6,6 +6,8 @@ en:
       help: Help content
       recaptcha_site_key: reCAPTCHA Site Key
       recaptcha_secret_key: reCAPTCHA Secret
+      google_site_id: Google ID
+      baidu_site_id: Baidu ID
   buttons:
     back: Back
     save: Save
@@ -40,7 +42,10 @@ en:
         info: Site info
         base: Base info
         status: Status
-        seo: SEO
+        seo:
+          index: SEO
+          google: Google
+          baidu: Baidu
   site:
     title: IT-PACKAGE
     keywords: IT,PACKAGE

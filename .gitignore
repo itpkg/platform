@@ -16,4 +16,4 @@
 /.idea
 /db/schema.rb
 bower_components
-/public/tmp
+/public

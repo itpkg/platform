@@ -11,6 +11,8 @@ zh-CN:
       youtube_key: Youtube密钥
       recaptcha_site_key: reCAPTCHA Site Key
       recaptcha_secret_key: reCAPTCHA Secret
+      google_site_id: 谷歌ID
+      baidu_site_id: 百度ID
   buttons:
     back: 返回
     save: 保存
@@ -45,7 +47,10 @@ zh-CN:
           youtube: Youtube
           recaptcha: reCAPTCHA
         status: 站点状态
-        seo: 搜索引擎
+        seo:
+          index: 搜索引擎
+          google: 谷歌
+          baidu: 百度
 
   site:
     title: IT解决方案包

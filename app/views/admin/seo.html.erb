@@ -1,1 +1,26 @@
-seo
+<div class="row">
+  <div class="col-md-10">
+    <fieldset>
+      <legend><%= t('titles.personal.site.seo.google') %></legend>
+      <%= bootstrap_form_tag url: admin_seo_path, html: {id: 'google'} do |f| %>
+          <%= f.text_field :google_site_id, value: Setting.google_site_id %>
+          <%= f.primary t('buttons.save') %>
+      <% end %>
+    </fieldset>
+    <br/>
+    <fieldset>
+      <legend><%= t('titles.personal.site.seo.baidu') %></legend>
+      <%= bootstrap_form_tag url: admin_seo_path, html: {id: 'baidu'} do |f| %>
+          <%= f.text_field :baidu_site_id, value: Setting.baidu_site_id %>
+          <%= f.primary t('buttons.save') %>
+      <% end %>
+    </fieldset>
+  </div>
+</div>
+
+<script>
+    $(function () {
+        submit_form('google');
+        submit_form('baidu');
+    });
+</script>

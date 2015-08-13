@@ -29,7 +29,16 @@ class AdminController < ApplicationController
   end
 
   def seo
+    if request.method == 'POST'
+      %w(baidu_site_id google_site_id).each do |k|
+        val = params[k.to_sym]
+        if val
+          Setting[k] = val
+        end
 
+      end
+      render json: {ok: true, message: t('status.success')}
+    end
   end
 
   private
