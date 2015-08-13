@@ -3,7 +3,16 @@ class AdminController < ApplicationController
   layout false
 
   def keys
+    if request.method == 'POST'
+      %w(youtube_key recaptcha_site_key recaptcha_secret_key).each do |k|
+        val = params[k.to_sym]
+        if val
+          Setting[k] = val
+        end
 
+      end
+      render json: {ok: true, message: t('status.success')}
+    end
   end
 
   def info

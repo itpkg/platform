@@ -1,5 +1,16 @@
 zh-CN:
   back_to_top: 回到顶部
+  helpers:
+    label:
+      title: 标题
+      keywords: 关键字
+      description: 说明
+      copyright_html: 版权信息
+      about_us: 关于我们
+      help: 帮助信息
+      youtube_key: Youtube密钥
+      recaptcha_site_key: reCAPTCHA Site Key
+      recaptcha_secret_key: reCAPTCHA Secret
   buttons:
     back: 返回
     save: 保存
@@ -29,7 +40,10 @@ zh-CN:
         index: 站点设置
         info: 站点信息
         base: 基本信息
-        keys: 密钥管理
+        keys:
+          index: 密钥管理
+          youtube: Youtube
+          recaptcha: reCAPTCHA
         status: 站点状态
         seo: 搜索引擎
 

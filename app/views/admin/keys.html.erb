@@ -1,1 +1,27 @@
-keys
+<div class="row">
+  <div class="col-md-10">
+    <fieldset>
+      <legend><%= t('titles.personal.site.keys.youtube') %></legend>
+      <%= bootstrap_form_tag url: admin_keys_path, html: {id: 'youtube'} do |f| %>
+          <%= f.text_field :youtube_key, value: Setting.youtube_key %>
+          <%= f.primary t('buttons.save') %>
+      <% end %>
+    </fieldset>
+    <br/>
+    <fieldset>
+      <legend><%= t('titles.personal.site.keys.recaptcha') %></legend>
+      <%= bootstrap_form_tag url: admin_keys_path, html: {id: 'recaptcha'} do |f| %>
+          <%= f.text_field :recaptcha_site_key, value: Setting.recaptcha_site_key %>
+          <%= f.text_field :recaptcha_secret_key, value: Setting.recaptcha_secret_key %>
+          <%= f.primary t('buttons.save') %>
+      <% end %>
+    </fieldset>
+  </div>
+</div>
+
+<script>
+    $(function () {
+        submit_form('youtube');
+        submit_form('recaptcha');
+    });
+</script>

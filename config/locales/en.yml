@@ -1,5 +1,11 @@
 en:
   back_to_top: Back to top
+  helpers:
+    label:
+      copyright_html: Copyright
+      help: Help content
+      recaptcha_site_key: reCAPTCHA Site Key
+      recaptcha_secret_key: reCAPTCHA Secret
   buttons:
     back: Back
     save: Save
@@ -27,7 +33,10 @@ en:
       info: Info
       site:
         index: Settings
-        keys: Keys
+        keys:
+          index: Keys
+          youtube: Youtube
+          recaptcha: reCAPTCHA
         info: Site info
         base: Base info
         status: Status
