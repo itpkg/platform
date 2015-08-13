@@ -13,3 +13,4 @@ root.password = "changeme"
 root.skip_confirmation!
 root.save
 root.add_role 'root'
+root.add_role 'admin'

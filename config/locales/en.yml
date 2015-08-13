@@ -18,7 +18,12 @@ en:
       logs: Logs
       status: Status
       info: Info
-      site_info: Site info
+      site:
+        index: Settings
+        keys: Keys
+        info: Site info
+        status: Status
+        seo: SEO
   site:
     title: IT-PACKAGE
     copyright_html: '&copy; 2015 IT-PACKAGE, Inc. &middot;<a href="https://github.com/itpkg" target="_blank">Terms</a>'

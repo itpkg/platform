@@ -18,7 +18,13 @@ zh-CN:
       logs: 日志列表
       status: 用户状态
       info: 用户信息
-      site_info: 站点信息
+      site:
+        index: 站点设置
+        info: 基本信息
+        keys: 密钥管理
+        status: 站点状态
+        seo: 搜索引擎
+
   site:
     title: IT解决方案包
     copyright_html: '&copy; 2015 IT包, Inc. &middot;<a href="https://github.com/itpkg" target="_blank">团队</a>'
