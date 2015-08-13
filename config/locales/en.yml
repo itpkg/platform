@@ -17,6 +17,7 @@ en:
       dashboard: Dashboard
       logs: Logs
       status: Status
+      info: Info
       site_info: Site info
   site:
     title: IT-PACKAGE

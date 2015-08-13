@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  has_many :logs
+  has_many :logs, -> {order 'id DESC'}
   validates :username, presence: true, uniqueness: true
 
   def self.find_for_database_authentication(warden_conditions)

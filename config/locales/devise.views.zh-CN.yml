@@ -11,6 +11,13 @@ zh-CN:
         password_confirmation: 密码确认
         current_password: 当前密码
         remember_me: 记住我
+        sign_in_count: 登录次数
+        current_sign_in_at: 当前登录时间
+        current_sign_in_ip: 当前登录ip
+        last_sign_in_at: 上次登录时间
+        last_sign_in_ip: 上次登录ip
+        confirmed_at: 账户激活时间
+        created_at: 账户创建时间
   devise:
     confirmations:
       new:

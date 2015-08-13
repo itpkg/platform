@@ -17,6 +17,7 @@ zh-CN:
       dashboard: 控制面板
       logs: 日志列表
       status: 用户状态
+      info: 用户信息
       site_info: 站点信息
   site:
     title: IT解决方案包

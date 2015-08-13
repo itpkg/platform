@@ -1,12 +1,5 @@
 class PersonalController < ApplicationController
   layout 'personal'
-
-  def logs
-
-  end
-
-  def status
-
-  end
+  before_action :authenticate_user!
 
 end

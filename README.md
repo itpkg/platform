@@ -26,6 +26,9 @@ IT-PACKAGE(ror version)
 
 ## Notes
 
+### Timezone
+    dpkg-reconfigure tzdata
+
 ### rails
     rails plugin new NAME --mountable
     rake railties:install:migrations
