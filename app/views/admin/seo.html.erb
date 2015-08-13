@@ -15,6 +15,14 @@
           <%= f.primary t('buttons.save') %>
       <% end %>
     </fieldset>
+    <br/>
+    <fieldset>
+      <legend><%= t('titles.personal.site.seo.robots') %></legend>
+      <%= bootstrap_form_tag url: admin_seo_path, html: {id: 'robots'} do |f| %>
+          <%= f.text_area :robots_txt, value: Setting.robots_txt, rows:8 %>
+          <%= f.primary t('buttons.save') %>
+      <% end %>
+    </fieldset>
   </div>
 </div>
 
@@ -22,5 +30,6 @@
     $(function () {
         submit_form('google');
         submit_form('baidu');
+        submit_form('robots');
     });
 </script>

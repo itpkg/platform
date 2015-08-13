@@ -8,6 +8,7 @@ en:
       recaptcha_secret_key: reCAPTCHA Secret
       google_site_id: Google ID
       baidu_site_id: Baidu ID
+      robots_txt: robots.txt
   buttons:
     back: Back
     save: Save
@@ -46,6 +47,7 @@ en:
           index: SEO
           google: Google
           baidu: Baidu
+          robots: robots
   site:
     title: IT-PACKAGE
     keywords: IT,PACKAGE

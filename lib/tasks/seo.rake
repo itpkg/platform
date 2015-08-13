@@ -14,4 +14,12 @@ namespace :seo do
       File.open("#{Rails.root}/public/baidu_verify_#{id}.html", 'w') { |f| f.puts id }
     end
   end
+
+  desc 'robots file'
+  task robots: :environment do
+    txt = Setting.robots_txt
+    if txt
+      File.open("#{Rails.root}/public/robots.txt", 'w') { |f| f.puts txt }
+    end
+  end
 end
