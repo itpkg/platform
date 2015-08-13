@@ -3,13 +3,11 @@
 <head>
   <title><%= site_info 'title' %></title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= yield :css%>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/widgets/nav_bar' %>
-<div class="container-fluid">
-  <%= yield :root %>
-</div>
+<%= yield :root %>
 </body>
 </html>
