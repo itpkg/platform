@@ -62,6 +62,8 @@ gem 'rolify'
 gem 'attr_encrypted'
 gem 'omniauth-google-oauth2'
 
+gem 'bootstrap_form'
+
 gem 'rails-i18n'
 gem 'redcarpet'
 gem 'wikicloth'

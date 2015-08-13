@@ -2,6 +2,13 @@ zh-CN:
   back_to_top: 回到顶部
   buttons:
     back: 返回
+    save: 保存
+    update: 更新
+    submit: 提交
+    reset: 重写
+    view: 查看
+    remove: 删除
+    edit: 编辑
   status:
     success: 操作成功
     failed: 出错啦
@@ -20,11 +27,16 @@ zh-CN:
       info: 用户信息
       site:
         index: 站点设置
-        info: 基本信息
+        info: 站点信息
+        base: 基本信息
         keys: 密钥管理
         status: 站点状态
         seo: 搜索引擎
 
   site:
     title: IT解决方案包
+    keywords: IT,PACKAGE
+    description: IT包
     copyright_html: '&copy; 2015 IT包, Inc. &middot;<a href="https://github.com/itpkg" target="_blank">团队</a>'
+    about_us: '## 关于我们'
+    help: '## 帮助文档'

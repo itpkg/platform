@@ -2,6 +2,13 @@ en:
   back_to_top: Back to top
   buttons:
     back: Back
+    save: Save
+    update: Update
+    submit: Submit
+    reset: Reset
+    view: View
+    remove: Remove
+    edit: Edit
   status:
     success: Success
     failed: Failed
@@ -22,8 +29,13 @@ en:
         index: Settings
         keys: Keys
         info: Site info
+        base: Base info
         status: Status
         seo: SEO
   site:
     title: IT-PACKAGE
+    keywords: IT,PACKAGE
+    description: IT PACKAGE
     copyright_html: '&copy; 2015 IT-PACKAGE, Inc. &middot;<a href="https://github.com/itpkg" target="_blank">Terms</a>'
+    about_us: '## About us'
+    help: '## Help documents'

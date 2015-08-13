@@ -1,0 +1,3 @@
+class LeaveWordsController < ApplicationController
+
+end

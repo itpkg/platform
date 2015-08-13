@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= site_info 'title' %></title>
+  <title><%= t 'site.title' %></title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= yield :css%>
+  <%= yield :css %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   #----------- personal
   %w(logs site status).each { |a| get "personal/#{a}" }
+  %w(info keys seo).each do |a|
+    get "admin/#{a}"
+    post "admin/#{a}"
+  end
+  resources :notes
+  resources :leave_words
   #----------- site
   %w(about_us help).each { |a| get a => "home##{a}" }
 

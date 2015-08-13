@@ -2,39 +2,47 @@
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a href="#info" aria-controls="info" role="tab" data-toggle="tab">
-        <%= t('titles.personal.site.info')%>
+        <%= t('titles.personal.site.info') %>
       </a>
     </li>
     <li role="presentation">
       <a href="#keys" aria-controls="keys" role="tab" data-toggle="tab">
-        <%= t('titles.personal.site.keys')%>
+        <%= t('titles.personal.site.keys') %>
       </a>
     </li>
     <li role="presentation">
       <a href="#seo" aria-controls="seo" role="tab" data-toggle="tab">
-        <%= t('titles.personal.site.seo')%>
+        <%= t('titles.personal.site.seo') %>
       </a>
     </li>
     <li role="presentation">
       <a href="#status" aria-controls="status" role="tab" data-toggle="tab">
-        <%= t('titles.personal.site.status')%>
+        <%= t('titles.personal.site.status') %>
       </a>
     </li>
   </ul>
+  <br>
 
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="info">
-      ..h.
-    </div>
-    <div role="tabpanel" class="tab-pane" id="keys">
-      ..p.
-    </div>
-    <div role="tabpanel" class="tab-pane" id="status">
-      ..m.
-    </div>
-    <div role="tabpanel" class="tab-pane" id="seo">
-      ..s.
-    </div>
-  </div>
-
+  <div id="content" class="tab-pane"></div>
 </div>
+
+<script>
+    $(function () {
+        var id = 'content';
+        $('[data-toggle="tab"]').click(function (e) {
+            e.preventDefault();
+            switch ($(e.target).attr('href').substr(1)) {
+                case 'info':
+                    load_by_url(id, '<%= admin_info_path %>');
+                    break;
+                case 'keys':
+                    load_by_url(id, '<%= admin_keys_path %>');
+                    break;
+                case 'seo':
+                    load_by_url(id, '<%= admin_seo_path %>');
+                    break;
+            }
+        });
+        load_by_url(id, '<%= admin_info_path %>');
+    });
+</script>
