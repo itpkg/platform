@@ -22,4 +22,14 @@ namespace :seo do
       File.open("#{Rails.root}/public/robots.txt", 'w') { |f| f.puts txt }
     end
   end
+
+  desc 'http error pages'
+  task errors: :environment do
+    %w(404 422 500).each do |err|
+      txt = Setting["http_#{err}"]
+      if txt
+        File.open("#{Rails.root}/public/#{err}.html", 'w') { |f| f.puts txt }
+      end
+    end
+  end
 end

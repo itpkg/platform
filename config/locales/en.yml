@@ -9,6 +9,9 @@ en:
       google_site_id: Google ID
       baidu_site_id: Baidu ID
       robots_txt: robots.txt
+      http_422: 422.html
+      http_404: 404.html
+      http_500: 500.html
   buttons:
     back: Back
     save: Save
@@ -43,6 +46,11 @@ en:
         info: Site info
         base: Base info
         status: Status
+        errors:
+          index: Error pages
+          e404: Http 404 error
+          e422: Http 422 error
+          e500: Http 500 error
         seo:
           index: SEO
           google: Google

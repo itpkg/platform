@@ -14,6 +14,9 @@ zh-CN:
       google_site_id: 谷歌ID
       baidu_site_id: 百度ID
       robots_txt: robots.txt
+      http_422: 422.html
+      http_404: 404.html
+      http_500: 500.html
   buttons:
     back: 返回
     save: 保存
@@ -48,6 +51,11 @@ zh-CN:
           youtube: Youtube
           recaptcha: reCAPTCHA
         status: 站点状态
+        errors:
+          index: 错误页面
+          e404: Http 404 错误
+          e422: Http 422 错误
+          e500: Http 500 错误
         seo:
           index: 搜索引擎
           google: 谷歌

@@ -16,6 +16,11 @@
       </a>
     </li>
     <li role="presentation">
+      <a href="#errors" aria-controls="errors" role="tab" data-toggle="tab">
+        <%= t('titles.personal.site.errors.index') %>
+      </a>
+    </li>
+    <li role="presentation">
       <a href="#status" aria-controls="status" role="tab" data-toggle="tab">
         <%= t('titles.personal.site.status') %>
       </a>
@@ -40,6 +45,9 @@
                     break;
                 case 'seo':
                     load_by_url(id, '<%= admin_seo_path %>');
+                    break;
+                case 'errors':
+                    load_by_url(id, '<%= admin_errors_path %>');
                     break;
             }
         });
