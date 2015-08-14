@@ -13,5 +13,21 @@
 </head>
 <body>
 <%= yield :root %>
+<script>
+    function on_button_remove_and_refresh(delete_url, refresh_id, refresh_url) {
+        if(confirm('<%= t 'are_you_sure' %>')){
+            $.ajax({
+                url: delete_url,
+                type: 'DELETE',
+                success: function (result) {
+                    alert(result.message);
+                    if (result.ok) {
+                        load_by_url(refresh_id, refresh_url);
+                    }
+                }
+            });
+        }
+    }
+</script>
 </body>
 </html>

@@ -1,5 +1,20 @@
 class LeaveWordsController < ApplicationController
 
+  def index
+    authorize! :admin, nil
+    @leave_words = LeaveWord.all.order 'id DESC'
+    render 'index', layout: false
+  end
+
+  def destroy
+    authorize! :admin, nil
+    lw = LeaveWord.find params[:id]
+    if lw
+      lw.destroy
+    end
+    render json: {ok:true, message: t('status.success')}
+  end
+
   def create
     uri = URI 'https://www.google.com/recaptcha/api/siteverify'
     res = Net::HTTP.post_form uri,

@@ -1,0 +1,22 @@
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <td width="20%"><%= t 'helpers.label.created_at' %></td>
+    <td><%= t 'activerecord.attributes.leave_word.message' %></td>
+    <td width="10%"></td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @leave_words.each do |lw| %>
+      <tr>
+        <td><%= lw.created_at %></td>
+        <td><%= lw.message %></td>
+        <td>
+          <button onclick="on_button_remove_and_refresh('<%= leave_word_path(lw)%>', 'content', '<%= leave_words_path%>');" id="lw-del-<%= lw.id %>" class="btn btn-danger">
+            <%= t 'buttons.remove' %>
+          </button>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

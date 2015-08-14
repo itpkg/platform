@@ -1,7 +1,9 @@
 en:
   back_to_top: Back to top
+  are_you_sure: Are you sure?
   helpers:
     label:
+      created_at: Created at
       copyright_html: Copyright
       help: Help content
       recaptcha_site_key: reCAPTCHA Site Key
@@ -23,6 +25,7 @@ en:
     reset: Reset
     view: View
     remove: Remove
+    refresh: Refresh
     edit: Edit
     upload: Upload
   status:
@@ -51,6 +54,7 @@ en:
         base: Base info
         favicon: favicon
         status: Status
+        leave_words: Leave words
         errors:
           index: Error pages
           e404: Http 404 error

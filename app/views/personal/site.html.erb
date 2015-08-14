@@ -6,22 +6,27 @@
       </a>
     </li>
     <li role="presentation">
-      <a href="#keys" aria-controls="keys" role="tab" data-toggle="tab">
+      <a aria-controls="keys" role="tab" data-toggle="tab">
         <%= t('titles.personal.site.keys.index') %>
       </a>
     </li>
     <li role="presentation">
-      <a href="#seo" aria-controls="seo" role="tab" data-toggle="tab">
+      <a aria-controls="seo" role="tab" data-toggle="tab">
         <%= t('titles.personal.site.seo.index') %>
       </a>
     </li>
     <li role="presentation">
-      <a href="#errors" aria-controls="errors" role="tab" data-toggle="tab">
+      <a aria-controls="errors" role="tab" data-toggle="tab">
         <%= t('titles.personal.site.errors.index') %>
       </a>
     </li>
     <li role="presentation">
-      <a href="#status" aria-controls="status" role="tab" data-toggle="tab">
+      <a aria-controls="leave_words" role="tab" data-toggle="tab">
+        <%= t('titles.personal.site.leave_words') %>
+      </a>
+    </li>
+    <li role="presentation">
+      <a aria-controls="status" role="tab" data-toggle="tab">
         <%= t('titles.personal.site.status') %>
       </a>
     </li>
@@ -36,7 +41,7 @@
         var id = 'content';
         $('[data-toggle="tab"]').click(function (e) {
             e.preventDefault();
-            switch ($(e.target).attr('href').substr(1)) {
+            switch ($(e.target).attr('aria-controls')) {
                 case 'info':
                     load_by_url(id, '<%= admin_info_path %>');
                     break;
@@ -48,6 +53,9 @@
                     break;
                 case 'errors':
                     load_by_url(id, '<%= admin_errors_path %>');
+                    break;
+                case 'leave_words':
+                        load_by_url(id, '<%= leave_words_path%>');
                     break;
             }
         });
