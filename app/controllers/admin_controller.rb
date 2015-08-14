@@ -2,6 +2,18 @@ class AdminController < ApplicationController
   before_filter :check_permissions
   layout false
 
+  def engines
+    if request.method == 'POST'
+      ITPKG_MODULES.each do |k|
+        val = params[k.to_sym]
+        if val
+          Setting["engine_#{k}_enable"] = val == '1'
+        end
+      end
+      render json: {ok: true, message: t('status.success')}
+    end
+  end
+
   def status
     dbc = Rails.configuration.database_configuration[Rails.env]
     @database = "#{dbc['adapter']}://#{dbc['username']}@#{dbc['host']}:#{dbc['port']}/#{dbc['database']}"

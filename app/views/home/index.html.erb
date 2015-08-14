@@ -1,8 +1,8 @@
 <% Notice.where(lang: I18n.locale).order('id DESC').each do |n| %>
     <blockquote>
       <p>
-        <%= raw md2html n.message%>
+        <%= raw md2html n.message %>
       </p>
-      <footer><cite><%= time_ago_in_words n.updated_at%></cite></footer>
+      <footer><cite><%= time_ago_in_words n.updated_at %></cite></footer>
     </blockquote>
 <% end %>

@@ -2,11 +2,11 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   #----------- personal
-  %w(site status).each { |a| get "personal/#{a}" }
+  %w(site status ).each { |a| get "personal/#{a}" }
 
   post 'admin/favicon'
   get 'admin/status'
-  %w(info keys seo errors).each do |a|
+  %w(info keys seo errors engines roles).each do |a|
     get "admin/#{a}"
     post "admin/#{a}"
   end

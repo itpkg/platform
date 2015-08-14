@@ -54,6 +54,8 @@ en:
         base: Base info
         favicon: favicon
         status: Status
+        engines: Modules
+        roles: Roles
         notices: Notices
         leave_words: Leave words
         errors:

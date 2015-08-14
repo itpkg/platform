@@ -31,6 +31,16 @@
       </a>
     </li>
     <li role="presentation">
+      <a aria-controls="engines" role="tab" data-toggle="tab">
+        <%= t('titles.personal.site.engines') %>
+      </a>
+    </li>
+    <li role="presentation">
+      <a aria-controls="roles" role="tab" data-toggle="tab">
+        <%= t('titles.personal.site.roles') %>
+      </a>
+    </li>
+    <li role="presentation">
       <a aria-controls="status" role="tab" data-toggle="tab">
         <%= t('titles.personal.site.status') %>
       </a>
@@ -64,6 +74,12 @@
                     break;
                 case 'notices':
                     load_by_url(id, '<%= notices_path %>');
+                    break;
+                case  'engines':
+                    load_by_url(id, '<%= admin_engines_path %>');
+                    break;
+                case  'roles':
+                    load_by_url(id, '<%= admin_roles_path %>');
                     break;
                 case 'status':
                     load_by_url(id, '<%= admin_status_path %>');
