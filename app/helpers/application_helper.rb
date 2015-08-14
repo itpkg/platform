@@ -10,7 +10,7 @@ module ApplicationHelper
     links = []
     ITPKG_MODULES.each do |en|
       if Setting["engine_#{en}_enable"]
-        links << {url:eval("#{en}.root_path"), title:t("#{en}.title")}
+        links << {url: eval("#{en}.root_path"), title: t("#{en}.title")}
       end
     end
     links

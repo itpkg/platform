@@ -11,7 +11,7 @@ module PersonalHelper
 
       ITPKG_MODULES.each do |en|
         if Setting["engine_#{en}_enable"]
-          links << {url:eval("#{en}.personal_path"), title:t("#{en}.name")}
+          links << {url: eval("#{en}.personal_path"), title: t("#{en}.name")}
         end
       end
     end

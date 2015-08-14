@@ -3,8 +3,8 @@
     <fieldset>
       <legend><%= t('titles.personal.site.roles') %></legend>
       <%= bootstrap_form_tag url: roles_path, html: {id: 'role'} do |f| %>
-          <%= f.select :user_id, options_for_select(User.all.order('id DESC').map{|u|[u.to_s, u.id]}), label:t('activerecord.attributes.role.user')%>
-          <%= f.text_field :name, label:t('activerecord.attributes.role.name') %>
+          <%= f.select :user_id, options_for_select(User.all.order('id DESC').map { |u| [u.to_s, u.id] }), label: t('activerecord.attributes.role.user') %>
+          <%= f.text_field :name, label: t('activerecord.attributes.role.name') %>
           <%= f.check_box :allocate, label: t('buttons.allocate') %>
 
           <%= f.primary t('buttons.save') %>
@@ -15,7 +15,7 @@
 
 <script>
     $(function () {
-        submit_form('role', function(){
+        submit_form('role', function () {
             load_by_url('content', '<%= roles_path %>');
         });
     });

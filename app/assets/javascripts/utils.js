@@ -14,7 +14,7 @@ function submit_form(id, success) {
                 type: "POST",
                 data: data,
                 success: function (data, textStatus, jqXHR) {
-                    if(data.message){
+                    if (data.message) {
                         alert(data.message);
                     }
                     if (success) {
