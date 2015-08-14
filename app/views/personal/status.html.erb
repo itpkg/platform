@@ -14,8 +14,8 @@
     <fieldset>
       <legend><%= t 'titles.personal.logs' %></legend>
       <div class="list-group">
-        <% current_user.logs.limit(50).each do |l|%>
-            <a class="list-group-item"><%= time_ago_in_words l.created_at %>: <%= l.message%></a>
+        <% current_user.logs.limit(50).each do |l| %>
+            <a class="list-group-item"><%= time_ago_in_words l.created_at %>: <%= l.message %></a>
         <% end %>
       </div>
     </fieldset>

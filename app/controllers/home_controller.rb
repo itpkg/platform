@@ -4,8 +4,9 @@ class HomeController < ApplicationController
   end
 
   def about_us
-    @content = t('titles.about_us')
-    render 'markdown', layout: 'simple'
+    @leave_word = LeaveWord.new
+    @content = t('site.about_us')
+    render 'about_us', layout: 'simple'
   end
 
   def help

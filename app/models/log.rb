@@ -2,7 +2,7 @@ class Log < ActiveRecord::Base
   validates :user_id, presence: true
   validates :message, presence: true
 
-  enum flag:[:info, :alert, :security]
+  enum flag: [:info, :alert, :security]
 
   before_create :set_created_at
 

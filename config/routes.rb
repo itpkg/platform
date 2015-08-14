@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post "admin/#{a}"
   end
   resources :notes
-  resources :leave_words
+  resources :leave_words, only: [:create, :destroy, :index]
   #----------- site
   %w(about_us help).each { |a| get a => "home##{a}" }
 

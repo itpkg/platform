@@ -22,15 +22,15 @@
     <fieldset>
       <legend><%= t('titles.about_us') %></legend>
       <%= bootstrap_form_tag url: admin_info_path, html: {id: 'about_us'} do |f| %>
-          <%= f.text_area :about_us, value: t('site.about_us'), rows:12 %>
+          <%= f.text_area :about_us, value: t('site.about_us'), rows: 12 %>
           <%= f.primary t('buttons.save') %>
       <% end %>
     </fieldset>
     <br/>
     <fieldset>
       <legend><%= t('titles.help') %></legend>
-      <%= bootstrap_form_tag url: admin_info_path , html: {id: 'help'} do |f| %>
-          <%= f.text_area :help, value: t('site.help'), rows:12 %>
+      <%= bootstrap_form_tag url: admin_info_path, html: {id: 'help'} do |f| %>
+          <%= f.text_area :help, value: t('site.help'), rows: 12 %>
           <%= f.primary t('buttons.save') %>
       <% end %>
     </fieldset>

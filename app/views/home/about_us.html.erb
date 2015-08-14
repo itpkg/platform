@@ -1,0 +1,12 @@
+<%= raw md2html(@content) %>
+<br/>
+
+<fieldset>
+  <legend><%= t('activerecord.models.leaveword') %></legend>
+  <%= bootstrap_form_for(@leave_word) do |f| %>
+      <%= f.text_area :message, rows: 8 %>
+      <%= render 'layouts/widgets/recaptcha' %>
+      <br/>
+      <%= f.primary t('buttons.submit') %>
+  <% end %>
+</fieldset>

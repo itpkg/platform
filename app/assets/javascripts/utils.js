@@ -1,7 +1,6 @@
-
 function load_by_url(id, url) {
     $.get(url, function (data) {
-        $("div#"+id).html(data);
+        $("div#" + id).html(data);
     });
 }
 function submit_form(id, success) {

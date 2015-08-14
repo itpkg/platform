@@ -2,9 +2,9 @@
 <html>
 <head>
   <title><%= t 'site.title' %></title>
-  <% favicon = Setting.favicon%>
+  <% favicon = Setting.favicon %>
   <% if favicon %>
-      <link href="<%= favicon.fetch :href%>" rel="<%= favicon.fetch :rel%>" type="<%= favicon.fetch :type%>" />
+      <link href="<%= favicon.fetch :href %>" rel="<%= favicon.fetch :rel %>" type="<%= favicon.fetch :type %>"/>
   <% end %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= yield :css %>

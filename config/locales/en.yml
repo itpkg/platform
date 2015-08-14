@@ -14,6 +14,7 @@ en:
       http_500: 500.html
   errors:
     bad_type: Bad type [%{type}]
+    not_valid_captcha: Bad captcha!
   buttons:
     back: Back
     save: Save

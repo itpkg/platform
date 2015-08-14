@@ -8,10 +8,10 @@ class AdminController < ApplicationController
       if fav
         case fav.content_type
           when 'image/x-icon'
-            Setting.favicon = {body: fav.read, type: fav.content_type, rel:'shortcut icon', href:'/favicon.ico'}
+            Setting.favicon = {body: fav.read, type: fav.content_type, rel: 'shortcut icon', href: '/favicon.ico'}
             flash[:notice] = t 'status.success'
           when 'image/png'
-            Setting.favicon = {body: fav.read, type: fav.content_type, rel:'apple-touch-icon', href:'/favicon.png'}
+            Setting.favicon = {body: fav.read, type: fav.content_type, rel: 'apple-touch-icon', href: '/favicon.png'}
             flash[:notice] = t 'status.success'
           else
             flash[:alert] = t 'errors.bad_type', type: fav.content_type
