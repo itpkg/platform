@@ -1,8 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   #----------- personal
-  %w(logs site status).each { |a| get "personal/#{a}" }
+  %w(site status).each { |a| get "personal/#{a}" }
 
   post 'admin/favicon'
+  get 'admin/status'
   %w(info keys seo errors).each do |a|
     get "admin/#{a}"
     post "admin/#{a}"
@@ -16,6 +19,12 @@ Rails.application.routes.draw do
   devise_for :users
   mount Email::Engine, at: '/email'
   mount Cms::Engine, at: '/cms'
+
+
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web, at: '/jobs'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -2,6 +2,11 @@ class AdminController < ApplicationController
   before_filter :check_permissions
   layout false
 
+  def status
+    dbc   = Rails.configuration.database_configuration[Rails.env]
+    @database = "#{dbc['adapter']}://#{dbc['username']}@#{dbc['host']}:#{dbc['port']}/#{dbc['database']}"
+    @redis = Redis.new(url:ENV['ITPKG_REDIS_PROVIDER']).info
+  end
   def favicon
     if request.method == 'POST'
       fav = params[:favicon]

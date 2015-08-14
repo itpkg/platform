@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Server</div>
+      <div class="panel-body">
+        <ul>
+          <li>Time: <%= Time.now %></li>
+          <li>Ruby: <%= RUBY_VERSION %></li>
+          <li>RAILS_ENV: <%= Rails.env %></li>
+          <li>RAILS_HOME: <%= Rails.root %></li>
+          <li>Database: <%= @database%></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Redis</div>
+      <div class="panel-body">
+        <ul>
+        <% @redis.each do |k, v| %>
+            <li><%= k %>: <%= v %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <%= link_to 'Background jobs Monitoring', sidekiq_web_path, target: '_blank', class:'btn btn-info' %>
+  </div>
+</div>

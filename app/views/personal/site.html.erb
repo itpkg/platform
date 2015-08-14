@@ -55,7 +55,10 @@
                     load_by_url(id, '<%= admin_errors_path %>');
                     break;
                 case 'leave_words':
-                        load_by_url(id, '<%= leave_words_path%>');
+                    load_by_url(id, '<%= leave_words_path%>');
+                    break;
+                case 'status':
+                    load_by_url(id, '<%= admin_status_path%>');
                     break;
             }
         });
