@@ -4,6 +4,11 @@ zh-CN:
       leaveword: 留言板
       notice: 通知
     attributes:
+      role:
+        name: 角色名
+        resource_type: 资源类型
+        users: 用户列表
+        user: 用户
       leave_word:
         message: 内容
       notice:

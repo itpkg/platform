@@ -14,10 +14,11 @@ function submit_form(id, success) {
                 type: "POST",
                 data: data,
                 success: function (data, textStatus, jqXHR) {
+                    if(data.message){
+                        alert(data.message);
+                    }
                     if (success) {
                         success(data);
-                    } else {
-                        alert(data.message);
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

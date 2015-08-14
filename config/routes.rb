@@ -6,10 +6,11 @@ Rails.application.routes.draw do
 
   post 'admin/favicon'
   get 'admin/status'
-  %w(info keys seo errors engines roles).each do |a|
+  %w(info keys seo errors engines).each do |a|
     get "admin/#{a}"
     post "admin/#{a}"
   end
+  resources :roles, only:[:new, :create, :destroy, :index]
   resources :notices, except: [:show]
   resources :leave_words, only: [:create, :destroy, :index]
   #----------- site

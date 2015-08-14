@@ -3,6 +3,10 @@ en:
     models:
       leaveword: Leave words
     attributes:
+      role:
+        name: Role name
+        resource_type: Resource type
+        users: Users
       notice:
         message: Content
       leave_word:

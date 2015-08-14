@@ -4,6 +4,7 @@ en:
   helpers:
     label:
       created_at: Created at
+      updated_at: Updated at
       copyright_html: Copyright
       help: Help content
       recaptcha_site_key: reCAPTCHA Site Key
@@ -16,10 +17,15 @@ en:
       http_500: 500.html
   errors:
     bad_type: Bad type [%{type}]
+    bad_operation: Bad operation
     not_valid_captcha: Bad captcha!
   buttons:
     back: Back
     save: Save
+    create: Create
+    manage: Manage
+    apply: Apply
+    allocate: Allocate
     update: Update
     submit: Submit
     reset: Reset
