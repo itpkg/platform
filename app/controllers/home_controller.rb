@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-
+    render 'index', layout: 'simple'
   end
 
   def about_us
