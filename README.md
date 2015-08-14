@@ -34,3 +34,8 @@ IT-PACKAGE(ror version)
     rake railties:install:migrations
 
 
+## Devel
+### engine
+ * 需要修改application_controller和application_helper
+ * 需要实现 root_path和personal_path
+

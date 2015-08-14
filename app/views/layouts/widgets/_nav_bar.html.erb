@@ -11,36 +11,36 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t('titles.home'), root_path %></li>
+        <li><%= link_to t('titles.home'), main_app.root_path %></li>
         <% top_nav_items.each do |item| %>
             <li><%= link_to item.fetch(:title), item.fetch(:url) %></li>
         <% end %>
-        <li><%= link_to t('titles.help'), help_path %></li>
-        <li><%= link_to t('titles.about_us'), about_us_path %></li>
+        <li><%= link_to t('titles.help'), main_app.help_path %></li>
+        <li><%= link_to t('titles.about_us'), main_app.about_us_path %></li>
         <li class="dropdown">
           <% if current_user %>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <%= t('titles.personal.welcome', name: current_user.username) %>
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to t('titles.personal.dashboard'), edit_user_registration_path %></li>
+                <li><%= link_to t('titles.personal.dashboard'), main_app.edit_user_registration_path %></li>
                 <li class="divider"></li>
-                <li><%= link_to t('titles.personal.sign_out'), destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to t('titles.personal.sign_out'), main_app.destroy_user_session_path, method: :delete %></li>
               </ul>
           <% else %>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <%= t('titles.personal.sign_in_or_up') %>
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to t('devise.shared.links.sign_in'), new_user_session_path %></li>
+                <li><%= link_to t('devise.shared.links.sign_in'), main_app.new_user_session_path %></li>
                 <li class="divider"></li>
-                <li><%= link_to t('devise.shared.links.sign_up'), new_user_registration_path %></li>
+                <li><%= link_to t('devise.shared.links.sign_up'), main_app.new_user_registration_path %></li>
                 <li class="divider"></li>
-                <li><%= link_to t('devise.shared.links.forgot_your_password'), new_user_password_path %></li>
+                <li><%= link_to t('devise.shared.links.forgot_your_password'), main_app.new_user_password_path %></li>
                 <li class="divider"></li>
-                <li><%= link_to t('devise.shared.links.didn_t_receive_confirmation_instructions'), new_user_confirmation_path %></li>
+                <li><%= link_to t('devise.shared.links.didn_t_receive_confirmation_instructions'), main_app.new_user_confirmation_path %></li>
                 <li class="divider"></li>
-                <li><%= link_to t('devise.shared.links.didn_t_receive_unlock_instructions'), new_user_unlock_path %></li>
+                <li><%= link_to t('devise.shared.links.didn_t_receive_unlock_instructions'), main_app.new_user_unlock_path %></li>
               </ul>
           <% end %>
         </li>
