@@ -54,6 +54,7 @@ en:
         base: Base info
         favicon: favicon
         status: Status
+        notices: Notices
         leave_words: Leave words
         errors:
           index: Error pages

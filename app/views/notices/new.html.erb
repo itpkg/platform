@@ -1,0 +1,14 @@
+<fieldset>
+  <legend><%= t('activerecord.models.notice') %></legend>
+  <%= bootstrap_form_for @notice, html: {id: 'fm-notice-new'} do |f| %>
+      <%= f.text_area :message, rows: 8 %>
+      <%= f.primary t('buttons.submit') %>
+  <% end %>
+</fieldset>
+<script>
+    $(function () {
+        submit_form('fm-notice-new', function () {
+            load_by_url('content', '<%= notices_path%>');
+        });
+    });
+</script>

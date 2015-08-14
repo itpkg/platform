@@ -2,6 +2,9 @@ zh-CN:
   activerecord:
     models:
       leaveword: 留言板
+      notice: 通知
     attributes:
       leave_word:
+        message: 内容
+      notice:
         message: 内容

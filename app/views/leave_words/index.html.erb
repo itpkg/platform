@@ -12,7 +12,7 @@
         <td><%= lw.created_at %></td>
         <td><%= lw.message %></td>
         <td>
-          <button onclick="on_button_remove_and_refresh('<%= leave_word_path(lw)%>', 'content', '<%= leave_words_path%>');" id="lw-del-<%= lw.id %>" class="btn btn-danger">
+          <button onclick="on_remove_and_refresh('<%= leave_word_path(lw)%>', 'content', '<%= leave_words_path%>');" class="btn btn-danger">
             <%= t 'buttons.remove' %>
           </button>
         </td>

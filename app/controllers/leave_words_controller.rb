@@ -12,7 +12,7 @@ class LeaveWordsController < ApplicationController
     if lw
       lw.destroy
     end
-    render json: {ok:true, message: t('status.success')}
+    render json: {ok: true, message: t('status.success')}
   end
 
   def create

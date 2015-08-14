@@ -3,5 +3,7 @@ en:
     models:
       leaveword: Leave words
     attributes:
+      notice:
+        message: Content
       leave_word:
         message: Content

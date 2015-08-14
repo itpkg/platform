@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get "admin/#{a}"
     post "admin/#{a}"
   end
-  resources :notes
+  resources :notices, except: [:show]
   resources :leave_words, only: [:create, :destroy, :index]
   #----------- site
   %w(about_us help).each { |a| get a => "home##{a}" }

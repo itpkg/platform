@@ -1,0 +1,29 @@
+<div id="notice-form">
+</div>
+<div class="pull-right">
+  <button class="btn btn-success" onclick="load_by_url('notice-form', '<%= new_notice_path%>');"><%= t 'buttons.create' %></button>
+</div>
+<br/>
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <th width="20%"><%= t 'helpers.label.created_at' %></th>
+    <th><%= t 'activerecord.attributes.notice.message' %></th>
+    <th width="10%"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Notice.where(lang: I18n.locale).order('id DESC').each do |n| %>
+      <tr onclick="load_by_url('content', '<%= edit_notice_path(n) %>');">
+        <td><%= n.created_at %></td>
+        <td><%= n.message %></td>
+        <td>
+          <button onclick="on_remove_and_refresh('<%= notice_path(n) %>', 'content', '<%= notices_path%>');" class="btn btn-danger">
+            <%= t 'buttons.remove' %>
+          </button>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

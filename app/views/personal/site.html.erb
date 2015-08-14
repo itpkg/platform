@@ -1,7 +1,7 @@
 <div>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
-      <a href="#info" aria-controls="info" role="tab" data-toggle="tab">
+      <a aria-controls="info" role="tab" data-toggle="tab">
         <%= t('titles.personal.site.info') %>
       </a>
     </li>
@@ -23,6 +23,11 @@
     <li role="presentation">
       <a aria-controls="leave_words" role="tab" data-toggle="tab">
         <%= t('titles.personal.site.leave_words') %>
+      </a>
+    </li>
+    <li role="presentation">
+      <a aria-controls="notices" role="tab" data-toggle="tab">
+        <%= t('titles.personal.site.notices') %>
       </a>
     </li>
     <li role="presentation">
@@ -55,10 +60,13 @@
                     load_by_url(id, '<%= admin_errors_path %>');
                     break;
                 case 'leave_words':
-                    load_by_url(id, '<%= leave_words_path%>');
+                    load_by_url(id, '<%= leave_words_path %>');
+                    break;
+                case 'notices':
+                    load_by_url(id, '<%= notices_path %>');
                     break;
                 case 'status':
-                    load_by_url(id, '<%= admin_status_path%>');
+                    load_by_url(id, '<%= admin_status_path %>');
                     break;
             }
         });
