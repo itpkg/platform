@@ -30,17 +30,7 @@ namespace :seo do
     puts 'Generate favicon'
     fav = Setting.favicon
     if fav
-      case fav.fetch(:type)
-        when 'image/x-icon'
-          type = 'ico'
-        when 'image/png'
-          type = 'png'
-        else
-          type = nil
-      end
-      if type
-        File.open("#{Rails.root}/public/favicon.#{type}", 'wb') { |f| f.write fav.fetch :body }
-      end
+        File.open("#{Rails.root}/public#{fav.fetch :href}", 'wb') { |f| f.write fav.fetch :body }
     end
 
   end
