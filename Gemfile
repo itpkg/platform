@@ -81,6 +81,7 @@ gem 'fog-local'
 gem 'spreadsheet'
 
 gem 'dalli'
+gem 'sitemap_generator'
 
 gem 'email', path: '../email' #github:'itpkg/email'
 gem 'cms', path: '../cms' #github:'itpkg/cms'

@@ -21,6 +21,7 @@ zh-CN:
       http_404: 404.html
       http_500: 500.html
       favicon: 图标
+      site_author: 作者
   errors:
     bad_type: 错误类型 [%{type}]
     bad_operation: 错误的操作
@@ -77,6 +78,7 @@ zh-CN:
           e500: Http 500 错误
         seo:
           index: 搜索引擎
+          author: 作者
           google: 谷歌
           baidu: 百度
           robots: 爬虫

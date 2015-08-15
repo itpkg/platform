@@ -13,3 +13,4 @@ if Rails.env.development?
 end
 
 Rails.application.config.assets.precompile += %w(us cn).map { |img| "famfamfam-flags/dist/png/#{img}.png" }
+Rails.application.config.assets.precompile += %w(sitemap rss).map { |img| "famfamfam-silk/dist/png/#{img}.png" }

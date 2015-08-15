@@ -15,6 +15,7 @@ en:
       http_422: 422.html
       http_404: 404.html
       http_500: 500.html
+      site_author: Author
   errors:
     bad_type: Bad type [%{type}]
     bad_operation: Bad operation
@@ -71,6 +72,7 @@ en:
           e500: Http 500 error
         seo:
           index: SEO
+          author: Author
           google: Google
           baidu: Baidu
           robots: robots

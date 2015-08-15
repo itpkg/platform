@@ -1,6 +1,14 @@
 <div class="row">
   <div class="col-md-10">
     <fieldset>
+      <legend><%= t('titles.personal.site.seo.author') %></legend>
+      <%= bootstrap_form_tag url: admin_seo_path, html: {id: 'author'} do |f| %>
+          <%= f.text_field :site_author, value: Setting.site_author %>
+          <%= f.primary t('buttons.save') %>
+      <% end %>
+    </fieldset>
+    <br/>
+    <fieldset>
       <legend><%= t('titles.personal.site.seo.google') %></legend>
       <%= bootstrap_form_tag url: admin_seo_path, html: {id: 'google'} do |f| %>
           <%= f.text_field :google_site_id, value: Setting.google_site_id %>
@@ -31,5 +39,6 @@
         submit_form('google');
         submit_form('baidu');
         submit_form('robots');
+        submit_form('author');
     });
 </script>

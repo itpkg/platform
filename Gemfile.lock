@@ -119,7 +119,7 @@ GEM
       zipruby
     erubis (2.7.0)
     excon (0.45.4)
-    execjs (2.5.2)
+    execjs (2.6.0)
     expression_parser (0.9.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -297,7 +297,7 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.6)
+    rails-dom-testing (1.0.7)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -346,6 +346,8 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
+    sitemap_generator (5.1.0)
+      builder
     spreadsheet (1.0.4)
       ruby-ole (>= 1.0)
     spring (1.3.6)
@@ -431,6 +433,7 @@ DEPENDENCIES
   sidekiq
   sidekiq-limit_fetch
   sinatra
+  sitemap_generator
   spreadsheet
   spring
   turbolinks

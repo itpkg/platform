@@ -82,7 +82,7 @@ class AdminController < ApplicationController
 
   def seo
     if request.method == 'POST'
-      %w(baidu_site_id google_site_id robots_txt).each do |k|
+      %w(baidu_site_id google_site_id robots_txt site_author).each do |k|
         val = params[k.to_sym]
         if val
           Setting[k] = val
