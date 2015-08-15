@@ -35,6 +35,7 @@ en:
     refresh: Refresh
     edit: Edit
     upload: Upload
+    search: Search
   status:
     success: Success
     failed: Failed

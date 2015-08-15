@@ -41,6 +41,7 @@ zh-CN:
     refresh: 刷新
     edit: 编辑
     upload: 上传
+    search: 搜索
   status:
     success: 操作成功
     failed: 出错啦

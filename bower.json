@@ -23,6 +23,7 @@
     "famfamfam-flags": "~0.3.4",
     "famfamfam-silk": "~0.3.3",
     "holderjs": "~2.8.1",
-    "html5shiv": "~3.7.3"
+    "html5shiv": "~3.7.3",
+    "jqcloud2": "~2.0.1"
   }
 }

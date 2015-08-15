@@ -83,5 +83,9 @@ gem 'spreadsheet'
 gem 'dalli'
 gem 'sitemap_generator'
 
+
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 gem 'email', path: '../email' #github:'itpkg/email'
 gem 'cms', path: '../cms' #github:'itpkg/cms'
