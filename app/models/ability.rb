@@ -7,6 +7,10 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.is_admin? || user.is_root?
       can :manage, :all
+    else
+      ITPKG_MODULES.each do |en|
+        Object.const_get("#{en.capitalize}::ABILITIES").each {|f| can *(f.call(user))}
+      end
     end
     #
     # The first argument to `can` is the action you are giving the user

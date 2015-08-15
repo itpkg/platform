@@ -35,7 +35,8 @@ IT-PACKAGE(ror version)
 
 
 ## Devel
-### engine
+### Engine
  * 需要修改application_controller和application_helper
  * 需要实现 root_path和personal_path
+ * 需要增加 ABILITIES
 
