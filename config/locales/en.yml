@@ -61,6 +61,7 @@ en:
         info: Site info
         base: Base info
         favicon: favicon
+        languages: Default languages
         status: Status
         engines: Modules
         roles: Roles

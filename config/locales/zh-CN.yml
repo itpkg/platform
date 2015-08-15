@@ -63,6 +63,7 @@ zh-CN:
         info: 站点信息
         base: 基本信息
         favicon: 图标
+        languages: 默认语言设置
         keys:
           index: 密钥管理
           youtube: Youtube

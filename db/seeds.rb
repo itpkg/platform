@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Setting.default_locale = 'en'
+
 root = User.new
 root.username = 'root'
 root.email = "root@#{ENV['ITPKG_DOMAIN']}"
@@ -14,3 +16,4 @@ root.skip_confirmation!
 root.save
 root.add_role 'root'
 root.add_role 'admin'
+

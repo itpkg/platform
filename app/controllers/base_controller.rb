@@ -3,7 +3,7 @@ module BaseController
 
   protected
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = params[:locale] || Setting.default_locale || I18n.default_locale
   end
 
   def default_url_options(options = {})

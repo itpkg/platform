@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     else
       ITPKG_MODULES.each do |en|
-        Object.const_get("#{en.capitalize}::ABILITIES").each {|f| can *(f.call(user))}
+        Object.const_get("#{en.capitalize}::ABILITIES").each { |f| can *(f.call(user)) }
       end
     end
     #

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= t 'site.title' %></title>
+  <title><%= "#{@title}-" if @title %><%= t 'site.title' %></title>
   <% favicon = Setting.favicon %>
   <% if favicon %>
       <link href="<%= favicon.fetch :href %>" rel="<%= favicon.fetch :rel %>" type="<%= favicon.fetch :type %>"/>

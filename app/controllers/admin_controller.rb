@@ -56,7 +56,7 @@ class AdminController < ApplicationController
 
   def keys
     if request.method == 'POST'
-      %w(youtube_key recaptcha_site_key recaptcha_secret_key).each do |k|
+      %w(youtube_key recaptcha_site_key recaptcha_secret_key default_locale).each do |k|
         val = params[k.to_sym]
         if val
           Setting[k] = val

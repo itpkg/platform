@@ -1,6 +1,20 @@
 <div class="row">
   <div class="col-md-10">
     <fieldset>
+      <legend><%= t('titles.personal.site.languages') %></legend>
+      <%= bootstrap_form_tag url: admin_keys_path, html: {id: 'lang'} do |f| %>
+
+          <%= f.form_group :default_locale do %>
+              <% %w(en zh-CN).each do |lang| %>
+                  <%= f.radio_button :default_locale, lang, label: lang, checked: (Setting.default_locale ==lang) %>
+              <% end %>
+          <% end %>
+
+          <%= f.primary t('buttons.save') %>
+      <% end %>
+    </fieldset>
+    <br/>
+    <fieldset>
       <legend><%= t('titles.personal.site.favicon') %></legend>
       <%= bootstrap_form_tag url: admin_favicon_path, multipart: true do |f| %>
           <%= f.file_field :favicon %>
@@ -39,6 +53,7 @@
 
 <script>
     $(function () {
+        submit_form('lang');
         submit_form('base');
         submit_form('about_us');
         submit_form('help');
