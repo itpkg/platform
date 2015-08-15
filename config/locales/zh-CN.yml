@@ -25,6 +25,7 @@ zh-CN:
   errors:
     bad_type: 错误类型 [%{type}]
     bad_operation: 错误的操作
+    bad_input: 错误的输入
     not_valid_captcha: 错误验证
   buttons:
     back: 返回
@@ -42,6 +43,7 @@ zh-CN:
     edit: 编辑
     upload: 上传
     search: 搜索
+    all: 所有
   status:
     success: 操作成功
     failed: 出错啦

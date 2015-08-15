@@ -5,6 +5,7 @@ en:
     label:
       created_at: Created at
       updated_at: Updated at
+      keywords: Keywords
       copyright_html: Copyright
       help: Help content
       recaptcha_site_key: reCAPTCHA Site Key
@@ -20,6 +21,7 @@ en:
     bad_type: Bad type [%{type}]
     bad_operation: Bad operation
     not_valid_captcha: Bad captcha!
+    bad_input: Bad input data
   buttons:
     back: Back
     save: Save
@@ -36,6 +38,7 @@ en:
     edit: Edit
     upload: Upload
     search: Search
+    all: All
   status:
     success: Success
     failed: Failed

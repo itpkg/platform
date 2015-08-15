@@ -85,7 +85,8 @@ gem 'sitemap_generator'
 
 
 gem 'kaminari'
+gem 'kaminari-i18n'
 gem 'bootstrap-kaminari-views'
 
-gem 'email', path: '../email' #github:'itpkg/email'
-gem 'cms', path: '../cms' #github:'itpkg/cms'
+gem 'email', github:'itpkg/email'#path: '../email' #
+gem 'cms', github:'itpkg/cms'# path: '../cms' #
