@@ -1,8 +1,6 @@
 #RAILS_ENV=production
-ITPKG_LOCALES=en;zh-CN
 ITPKG_DATABASE_PASSWORD=
 ITPKG_DOMAIN=localhost.localdomain
-ITPKG_MODULES=teamwork;vpn;pixiu
 ITPKG_MAILER_SENDER=no-reply@$ITPKG_DOMAIN
 ITPKG_ELASTICSEARCH_URL=http://es.$ITPKG_DOMAIN:9200
 ITPKG_REDIS_PROVIDER=redis://redis.$ITPKG_DOMAIN:6379/6
@@ -12,6 +10,4 @@ ITPKG_MEMCACHE_PROVIDER=cache.$ITPKG_DOMAIN
 #ITPKG_GOOGLE_CLIENT_SECRET=
 # can be generate by 'pwgen -s 128 1'
 ITPKG_SECRET_KEY_BASE=nooviuboo4ish6bai4aebiezei4eibohd3eisu7keishoo7vingooch4vierahp9uph2ceiceliechahmahxaer8eehoo5ru8ahwae5te8ohghititeh8eik5ufeiz6o
-ITPKG_AES_KEY=xaeceu2bithi7eik5ahgheg2eil2uupainae0ikaeshaejah4ohch0zai5yahtohpo2the7sieviu3eesheesainaep9beocheiqu0oogahvai7oor3xahzi6aongien
-ITPKG_HMAC_KEY=DwR7bC4J1s5weZK9LvQIf1qbgniXb52xhVeOXwmdFNHCxtpcKjQZhfqouH0DKw9SzIdfGAoOifxs3vPmb7XdPx93sz1A6lWuVXAmpAekGa9sbmA8rSj9YAvCREvPcXb9
 

@@ -40,3 +40,14 @@ IT-PACKAGE(ror version)
  * 需要实现 root_path和personal_path
  * 需要增加 ABILITIES
 
+
+## Deploy
+### mysql
+    CREATE DATABASE YOUR_NAME  DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
+### postgresql
+    CREATE DATABASE YOUR_NAME
+### local
+    cap production deploy:check
+    cap production puma:nginx_config 
+    cap production puma:config
+    cap production bower:install
