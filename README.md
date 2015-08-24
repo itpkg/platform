@@ -1,54 +1,11 @@
-IT-PACKAGE(ror version)
+IT-PACKAGE(go version)
 --------------------------------
 
-## Using by docker
+## Using by local
 
-### For mac(https://docs.docker.com/installation/mac/)
-    boot2docker init
-    boot2docker start
-    eval "$(boot2docker shellinit)"
-### For linux
-    pacman -S docker
-    gpasswd -a YOUR_NAME docker # then need relogin.
+### Install golang
+    bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) # Or if you are using zsh just change bash with zsh
+    gvm install go1.5
+    gvm use go1.5 --default
+    
 
-
-### First run
-    docker pull chonglou/itpkg
-    docker run -d --name itpkg -p 2222:22 -p 443:443 -p 8080:8080 -P --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro chonglou/itpkg:latest
-
-### Other commands
-    docker ps
-    docker start itpkg         # start itpkg 
-    docker stop itpkg          # stop itpkg
-    firefox https://localhost  # open in web browser
-    ssh -p 2222 root@localhost # password is changeme
-
-
-## Notes
-
-### Timezone
-    dpkg-reconfigure tzdata
-
-### rails
-    rails plugin new NAME --mountable
-    rake railties:install:migrations
-
-
-## Devel
-### Engine
- * 需要修改application_controller和application_helper
- * 需要实现 root_path和personal_path
- * 需要增加 ABILITIES
-
-
-## Deploy
-### postgresql
-    CREATE USER your_name WITH LOGIN PASSWORD 'your_password';
-    CREATE DATABASE your_database OWNER your_name;
-
-
-### local
-    cap production deploy:check
-    cap production puma:nginx_config 
-    cap production puma:config
-    cap production bower:install
