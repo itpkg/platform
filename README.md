@@ -42,10 +42,11 @@ IT-PACKAGE(ror version)
 
 
 ## Deploy
-### mysql
-    CREATE DATABASE YOUR_NAME  DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
 ### postgresql
-    CREATE DATABASE YOUR_NAME
+    CREATE USER your_name WITH LOGIN PASSWORD 'your_password';
+    CREATE DATABASE your_database OWNER your_name;
+
+
 ### local
     cap production deploy:check
     cap production puma:nginx_config 

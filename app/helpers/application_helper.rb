@@ -8,11 +8,17 @@ module ApplicationHelper
 
   def top_nav_items
     links = []
-    ITPKG_MODULES.each do |en|
-      if Setting["engine_#{en}_enable"]
-        links << {url: eval("#{en}.root_path"), title: t("#{en}.title")}
-      end
+    Rails.configuration.x.engines.map do |en|
+      puts '#'*80, en
+      links << {url: send(en).root_path, title: t("#{en}.title")}
     end
+    # ITPKG_MODULES.each do |en|
+    #   # if Setting["engine_#{en}_enable"]
+    #   #   puts '#'*80, "#{en}.root_path"
+    #   #
+    #   #
+    #   # end
+    # end
     links
   end
 end
