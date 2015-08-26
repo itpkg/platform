@@ -20,6 +20,7 @@ IT-PACKAGE(go version)
     source .vars
     ./itpkg db:create
     ./itpkg db:migrate
+    ./itpkg db:seeds
     ./itpkg assets:import
     ./itpkg server
 

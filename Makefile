@@ -3,7 +3,7 @@ target=release
 build:
 	#npm run release
 	go build -o $(target)/itpkg -ldflags "-s" app.go
-	-cp .vars config.yml $(target)/
+	-cp -r locales .vars config.yml $(target)/
 
 
 
