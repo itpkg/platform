@@ -4,13 +4,12 @@ http:
   host: localhost
   port: 8080
 database:
-  adapter: postgres
   host: localhost
   port: 5432
   name: "itpkg_{{.Env}}"
   user: postgres
   password: "{{.DbPassword}}"
-  extra: sslmode=disable
+  sslmode: disable
 
 redis:
   host: localhost
