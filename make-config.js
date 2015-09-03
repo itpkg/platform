@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = function (options) {
-    var port = 8088;
+    var port = 3000;
     var entry = {
         main: options.render ? "./js/render" : "./js/server",
         vendor: [
@@ -26,23 +26,19 @@ module.exports = function (options) {
     };
 
     var output = {
-        // publicPath: options.render ? "/" : "http://localhost:" + port + "/",
         filename: options.render ? "[chunkhash].js" : "[name].js",
         path: path.join(__dirname, "build", options.render ? "assets" : "public")
     };
 
     var loaders = [
-        //{test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
         {
             test: /\.jsx?$/,
             exclude: /(node_modules)/,
             loaders: options.hot ? ["react-hot-loader", "babel-loader?stage=0"] : ["babel-loader?stage=0", "strip-loader?strip[]=console.log"]
         },
 
-        //{test: /\.css$/, loader: "style-loader!css-loader?importLoaders=1"},
         {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
 
-        //{test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=8192'}
         {
             test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)$/i,
             loaders: [
