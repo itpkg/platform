@@ -24,6 +24,8 @@ IT-PACKAGE(go version)
     ./itpkg assets:import
     ./itpkg server
 
+### Upgrade
+    go get -u all
 
     
 
