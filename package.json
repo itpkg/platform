@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "IT-PACKAGE FRONTEND",
   "dependencies": {
+    "URIjs": "^1.16.0",
     "bootstrap": "^3.3.5",
     "famfamfam-flags": "^0.3.4",
     "famfamfam-silk": "^0.3.3",

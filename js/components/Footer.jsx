@@ -11,12 +11,12 @@ var padStyle = {
 };
 
 var HttpMixin = require("../mixins/Http");
-var cookie = require("js-cookie");
+var Utils = require("../Utils");
 
 var Footer = React.createClass({
     mixins: [T.IntlMixin, HttpMixin],
     switchLocale: function (locale) {
-        cookie.set("LANG", locale, {expires: 7});
+        localStorage.lang = locale;
         location.reload();
     },
     getInitialState: function () {
@@ -25,7 +25,7 @@ var Footer = React.createClass({
         };
     },
     componentDidMount: function () {
-        this.get("/info", function (rs) {
+        this.get(Utils.url_for("/info", {keys: "copyright"}), function (rs) {
             document.title = rs.title;
             this.setState({
                 copyright: rs.copyright
@@ -46,7 +46,7 @@ var Footer = React.createClass({
                         </a>
                     </p>
 
-                    <p>{this.state.copyright}</p>
+                    <p dangerouslySetInnerHTML={{__html: this.state.copyright}}></p>
                 </footer>
             </div>
         );

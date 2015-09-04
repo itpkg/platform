@@ -6,7 +6,6 @@ require("../css/base.css");
 var $ = require("jquery");
 var React = require('react');
 var Router = require("react-router");
-var cookie = require("js-cookie");
 
 var Routes = require("./Routes");
 
@@ -21,7 +20,7 @@ $(function () {
 
     var lang;
 
-    switch (cookie.get("LANG")) {
+    switch (localStorage.lang) {
         case "zh_CN":
             lang = zhCN;
             document.documentElement.lang = "zh";
@@ -32,7 +31,7 @@ $(function () {
             break;
         default:
             lang = enUS;
-            cookie.set("LANG", "en_US", {expires: 7});
+            localStorage.lang = "en_US";
     }
 
     Router.run(Routes, function (Handler) {

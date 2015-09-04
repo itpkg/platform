@@ -27,7 +27,7 @@ module.exports = function (options) {
 
     var output = {
         filename: options.render ? "[chunkhash].js" : "[name].js",
-        path: path.join(__dirname, "build", options.render ? "assets" : "public")
+        path: path.join(__dirname, options.render ? "assets" : "public")
     };
 
     var loaders = [
