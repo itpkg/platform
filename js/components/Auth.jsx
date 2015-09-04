@@ -8,8 +8,6 @@ import {Router,Link,Navigation} from 'react-router'
 var W = require("./Widgets");
 var Utils = require("../Utils");
 var HttpMixin = require("../mixins/Http");
-var AuthStore = require("../stores/Auth");
-var AuthActions = require("../actions/Auth");
 
 var NoSignInForm = React.createClass({
     mixins: [
@@ -56,13 +54,12 @@ var NoSignInForm = React.createClass({
 module.exports = {
     SignIn: React.createClass({
         mixins: [
-            Navigation,
-            Reflux.connect(AuthStore, 'token')
+            Navigation
         ],
         onSubmit: function (data) {
-            AuthActions.signIn(data.token);
-            //this.transitionTo("home");
+            sessionStorage.token = data.token;
             window.location.href = "/";
+            //this.transitionTo("home");
         },
         render: function () {
             return (
@@ -73,17 +70,16 @@ module.exports = {
     SignOut: React.createClass({
         mixins: [
             Navigation,
-            HttpMixin,
-            Reflux.connect(AuthStore, 'token')
+            HttpMixin
         ],
         componentDidMount: function () {
             this.get(
                 "/personal/sign_out",
                 undefined,
                 function (result) {
-                    AuthActions.signOut();
-                    //this.transitionTo("home");
+                    sessionStorage.removeItem = 'token';
                     window.location.href = "/";
+                    //this.transitionTo("home");
                 }, undefined, true);
         },
         render: function () {
