@@ -19,3 +19,9 @@ publish:
 	done
 
 
+reset:
+	for i in drop create migrate seed; do \
+		go run app.go db:$$i; \
+	done
+
+
