@@ -4,6 +4,7 @@ var React = require("react");
 var Reflux = require('reflux');
 var T = require('react-intl');
 var HttpMixin = require("../mixins/Http");
+var Utils = require("../Utils");
 
 import {Router,Link,Navigation} from 'react-router'
 import {ReactBootstrap, Navbar, Nav, NavItem, DropdownButton, MenuItem} from "react-bootstrap"
@@ -22,30 +23,30 @@ var Header = React.createClass({
         };
     },
     componentDidMount: function () {
-        this.get("/users/nav", function (rs) {
+        this.get(Utils.url_for("/info", {keys: ["title", "links"]}), function (rs) {
             this.setState({
-                navName: rs.data[0],
-                navLinks: rs.data.slice(1)
+                navName: rs.title,
+                navLinks: rs.links
             });
         });
-        this.get("/users/bar", function (rs) {
+        this.get(Utils.url_for("/personal/bar"), function (rs) {
             this.setState({
-                barName: rs.data[0],
-                barLinks: rs.data.slice(1)
+                barName: rs.label,
+                barLinks: rs.links
             });
         });
     },
     render: function () {
-        var navBar = this.state.navBar;
+        document.title = this.state.navName;
         return (
             <Navbar brand={<Link to="home"> {this.state.navName} </Link>} inverse fixedTop toggleNavKey={0}>
                 <Nav right onSelect={this.transitionTo}> {}
                     {this.state.navLinks.map(function (obj) {
-                        return (<NavItem key={"nav-" + obj.url} eventKey={obj.url}>{obj.name}</NavItem>)
+                        return (<NavItem key={"nav-" + obj.url} eventKey={obj.url}>{obj.label}</NavItem>)
                     })}
                     <DropdownButton title={this.state.barName}>
                         {this.state.barLinks.map(function (obj) {
-                            return (<MenuItem eventKey={obj.url} key={"nav-" + obj.url}>{obj.name}</MenuItem>)
+                            return (<MenuItem eventKey={obj.url} key={"nav-" + obj.url}>{obj.label}</MenuItem>)
                         })}
                     </DropdownButton>
                 </Nav>
