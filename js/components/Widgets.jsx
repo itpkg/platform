@@ -2,7 +2,7 @@
 
 var React = require("react");
 var T = require('react-intl');
-import {ReactBootstrap, Input, Button,ButtonInput, ButtonToolbar, Alert} from "react-bootstrap"
+import {Nav, NavItem,NavDropdown,MenuItem, ReactBootstrap, Input, Button,ButtonInput, ButtonToolbar, Alert} from "react-bootstrap"
 var HttpMixin = require("../mixins/Http");
 
 var AjaxForm = React.createClass({
@@ -21,7 +21,8 @@ var AjaxForm = React.createClass({
             },
             function (httpObj) {
                 this.setState({message: {style: 'danger', items: [httpObj.statusText]}});
-            }
+            },
+            this.props.bearer
         );
 
     },
@@ -165,6 +166,55 @@ var AjaxForm = React.createClass({
 });
 
 
+var AjaxNavBar = React.createClass({
+    mixins: [HttpMixin],
+    handleSelect(selectedKey) {
+        console.log(selectedKey);
+    },
+    getInitialState: function () {
+        return {links: []};
+    },
+    componentDidMount: function () {
+
+        this.get(
+            this.props.source,
+            undefined,
+            function (result) {
+                if (this.isMounted()) {
+                    this.setState({links: result.links});
+                }
+            },
+            undefined,
+            this.props.bearer
+        );
+
+    },
+    render: function () {
+        var links = this.state.links.map(function (obj) {
+
+            return (
+                <NavDropdown key={"ndd-"+obj.label} title={obj.label} id={"ndd-"+obj.label}>
+                    {obj.links.map(function (lk) {
+                        return (
+                            <MenuItem eventKey={lk.url} key={"key-"+lk.url}>
+                                {lk.label}
+                            </MenuItem>
+                        )
+                    })}
+                </NavDropdown>
+            );
+            //   return <NavItem key={"key-"+obj.url} eventKey={obj.url} href={obj.url}>{obj.label}</NavItem>
+
+        });
+        return (
+            <Nav bsStyle='tabs' onSelect={this.handleSelect}>
+                {links}
+            </Nav>
+        );
+    }
+});
+
 module.exports = {
-    Form: AjaxForm
+    Form: AjaxForm,
+    NavBar: AjaxNavBar
 };

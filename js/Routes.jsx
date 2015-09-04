@@ -22,6 +22,7 @@ var Routes = (
         <Route name="personal.confirm" path="/personal/confirm" handler={ Auth.Confirm }/>
         <Route name="personal.unlock" path="/personal/unlock" handler={ Auth.Unlock }/>
         <Route name="personal.profile" path="/personal/profile" handler={ Auth.Profile }/>
+        <Route name="personal.self" path="/personal/self" handler={ Auth.Self }/>
         <Route name="message.show" path="/show" handler={ Message }/>
     </Route>
 );

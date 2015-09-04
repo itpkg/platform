@@ -133,5 +133,14 @@ module.exports = {
                 </div>
             );
         }
+    }),
+    Self: React.createClass({//todo
+        render: function () {
+            return (
+                <div className="row">
+                    <W.NavBar source="/personal/self" bearer={true}/>
+                </div>
+            );
+        }
     })
 };
