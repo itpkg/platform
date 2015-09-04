@@ -8,7 +8,8 @@ module.exports = {
         },
         links: {
             back_to_home: "返回首页",
-            back_to_top: "返回顶部"
+            back_to_top: "返回顶部",
+            go_back: "返回上一页"
         }
     }
 

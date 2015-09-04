@@ -2,8 +2,11 @@
 
 var React = require("react");
 var T = require('react-intl');
+import {Navigation} from 'react-router'
 import {Nav, NavItem,NavDropdown,MenuItem, ReactBootstrap, Input, Button,ButtonInput, ButtonToolbar, Alert} from "react-bootstrap"
+
 var HttpMixin = require("../mixins/Http");
+
 
 var AjaxForm = React.createClass({
     mixins: [T.IntlMixin, HttpMixin],
@@ -64,7 +67,8 @@ var AjaxForm = React.createClass({
                     },
                     function (httpObj) {
                         this.setState({message: {style: 'danger', items: [httpObj.statusText]}});
-                    }
+                    },
+                    this.props.bearer
                 );
                 break;
             default:
@@ -150,10 +154,10 @@ var AjaxForm = React.createClass({
                     {fields}
                     <div className="form-group">
                         <div className="col-sm-offset-3 col-sm-9">
-                            <ButtonInput groupClassName="col-sm-3" type="submit" bsStyle="primary" value={fm.submit}
+                            <ButtonInput groupClassName="col-sm-2" type="submit" bsStyle="primary" value={fm.submit}
                                          onClick={this.handleSubmit}/>
                             {buttons}
-                            <ButtonInput groupClassName="col-sm-3" type="reset" bsStyle="default" value={fm.reset}/>
+                            <ButtonInput groupClassName="col-sm-2" type="reset" bsStyle="default" value={fm.reset}/>
 
                         </div>
                     </div>
@@ -196,25 +200,40 @@ var AjaxNavBar = React.createClass({
                 <NavDropdown key={"ndd-"+obj.label} title={obj.label} id={"ndd-"+obj.label}>
                     {obj.links.map(function (lk) {
                         return (
-                            <MenuItem eventKey={lk.url} key={"key-"+lk.url}>
+                            <MenuItem href={'#'+lk.url} key={"key-"+lk.url}>
                                 {lk.label}
                             </MenuItem>
                         )
                     })}
                 </NavDropdown>
             );
-            //   return <NavItem key={"key-"+obj.url} eventKey={obj.url} href={obj.url}>{obj.label}</NavItem>
+
 
         });
         return (
-            <Nav bsStyle='tabs' onSelect={this.handleSelect}>
+            <Nav bsStyle='tabs'>
                 {links}
             </Nav>
         );
     }
 });
 
+var Back = React.createClass({
+    mixins: [Navigation, T.IntlMixin],
+    go_back: function(){
+        window.history.back();
+    },
+    render: function () {
+        return (
+                <p className="pull-right">
+                    <Button onClick={this.go_back} bsStyle='success'>{this.getIntlMessage('links.go_back')}</Button>
+                </p>
+        )
+    }
+});
+
 module.exports = {
     Form: AjaxForm,
-    NavBar: AjaxNavBar
+    NavBar: AjaxNavBar,
+    Back: Back
 };

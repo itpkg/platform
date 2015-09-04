@@ -11,6 +11,16 @@ var Http = {
         params.locale = localStorage.lang;
         return URI(url).query({}).query(params);
     },
+    check_token: function (bearer, args) {
+        if (bearer) {
+            var token = sessionStorage.token;
+            if (token) {
+                args.headers = {
+                    'Authorization': 'Bearer ' + token
+                };
+            }
+        }
+    },
     get: function (url, params, success, error, bearer) {
 
         if (error == undefined) {
@@ -25,23 +35,16 @@ var Http = {
             type: "GET",
             dataType: "json"
         };
+        this.check_token(bearer, args);
 
-        if (bearer) {
-            var token = sessionStorage.token;
-            if (token) {
-                args.headers = {
-                    'Authorization': 'Bearer ' + token
-                };
-            }
-        }
         $.ajax(args);
     },
-    post: function (url, data, success, error) {
+    post: function (url, data, success, error, bearer) {
         if (error == undefined) {
             error = function () {
             };
         }
-        $.ajax({
+        var args = {
             url: this.url_for(url),
             success: success.bind(this),
             error: error.bind(this),
@@ -49,7 +52,10 @@ var Http = {
             type: "POST",
             dataType: "json",
             contentType: "application/json; charset=utf-8"
-        });
+        };
+        this.check_token(bearer, args);
+        //console.log(args);
+        $.ajax(args);
     }
 };
 

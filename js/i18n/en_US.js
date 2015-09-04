@@ -8,7 +8,8 @@ module.exports = {
         },
         links: {
             back_to_home: "Back to home",
-            back_to_top: "Back to top"
+            back_to_top: "Back to top",
+            go_back: "Go back"
         }
     }
 

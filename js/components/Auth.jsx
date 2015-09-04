@@ -57,7 +57,7 @@ module.exports = {
             Navigation
         ],
         onSubmit: function (data) {
-            sessionStorage.token = data.token;
+            sessionStorage.token = data[0];
             window.location.href = "/";
             //this.transitionTo("home");
         },
@@ -125,16 +125,21 @@ module.exports = {
             return (<NoSignInForm source="/personal/unlock"/>);
         }
     }),
-    Profile: React.createClass({//todo
+    Profile: React.createClass({
         render: function () {
             return (
                 <div className="row">
-                    <h2>Profile</h2>
+                    <div className="col-md-12 ">
+                    <W.Back />
+                        </div>
+                    <div className="col-md-12 ">
+                    <W.Form source="/personal/profile" bearer={true}/>
+                        </div>
                 </div>
             );
         }
     }),
-    Self: React.createClass({//todo
+    Self: React.createClass({
         render: function () {
             return (
                 <div className="row">
