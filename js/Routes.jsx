@@ -14,13 +14,13 @@ var Routes = (
 
         <Route name="about_us" path="/about_us" handler={ Site.AboutUs }/>
 
-        <Route name="users.sign_in" path="/users/sign_in" handler={ Auth.SignIn }/>
-        <Route name="users.sign_up" path="/users/sign_up" handler={ Auth.SignUp }/>
-        <Route name="users.forgot_password" path="/users/forgot_password" handler={ Auth.ForgotPassword }/>
-        <Route name="users.change_password" path="/users/change_password" handler={ Auth.ChangePassword }/>
-        <Route name="users.confirm" path="/users/confirm" handler={ Auth.Confirm }/>
-        <Route name="users.unlock" path="/users/unlock" handler={ Auth.Unlock }/>
-        <Route name="users.profile" path="/users/profile" handler={ Auth.Profile }/>
+        <Route name="personal.sign_in" path="/personal/sign_in" handler={ Auth.SignIn }/>
+        <Route name="personal.sign_up" path="/personal/sign_up" handler={ Auth.SignUp }/>
+        <Route name="personal.forgot_password" path="/personal/forgot_password" handler={ Auth.ForgotPassword }/>
+        <Route name="personal.change_password" path="/personal/change_password" handler={ Auth.ChangePassword }/>
+        <Route name="personal.confirm" path="/personal/confirm" handler={ Auth.Confirm }/>
+        <Route name="personal.unlock" path="/personal/unlock" handler={ Auth.Unlock }/>
+        <Route name="personal.profile" path="/personal/profile" handler={ Auth.Profile }/>
         <Route name="message.show" path="/show" handler={ Message }/>
     </Route>
 );

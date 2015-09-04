@@ -2,17 +2,18 @@
 
 var React = require("react");
 var T = require('react-intl');
-import {ReactBootstrap, Input, Button, ButtonToolbar, Alert} from "react-bootstrap"
+import {ReactBootstrap, Input, Button,ButtonInput, ButtonToolbar, Alert} from "react-bootstrap"
 var HttpMixin = require("../mixins/Http");
 
 var AjaxForm = React.createClass({
     mixins: [T.IntlMixin, HttpMixin],
     getInitialState: function () {
-        return {form: {fields: [], buttons: []}, data: {}}
+        return {form: {fields: [], buttons: []}}
     },
     componentDidMount: function () {
         this.get(
             this.props.source,
+            undefined,
             function (result) {
                 if (this.isMounted()) {
                     this.setState({form: result});
@@ -26,14 +27,10 @@ var AjaxForm = React.createClass({
     },
     handleSubmit: function (e) {
         e.preventDefault();
-        var data = this.state.data;
+        var data = {};
         var fm = this.state.form;
         fm.fields.map(function (obj) {
-            switch (obj.type) {
-                case "hidden":
-                    data[obj.id] = obj.value;
-                    break;
-            }
+            data[obj.id] = obj.value;
         });
         switch (fm.method) {
             case "POST":
@@ -48,7 +45,7 @@ var AjaxForm = React.createClass({
                             } else {
                                 this.setState({
                                     message: {
-                                        title: this.getIntlMessage('labels.success'),
+                                        title: result.title,
                                         style: "success",
                                         items: result.data
                                     }
@@ -57,7 +54,7 @@ var AjaxForm = React.createClass({
                         } else {
                             this.setState({
                                 message: {
-                                    title: this.getIntlMessage('labels.failed'),
+                                    title: result.title,
                                     style: "danger",
                                     items: result.errors
                                 }
@@ -75,12 +72,18 @@ var AjaxForm = React.createClass({
     },
     handleChange: function (e) {
         var item = e.target;
-        var data = this.state.data;
-        data[item.id] = item.value;
-        this.setState({data: data});
+        var fm = this.state.form;
+        fm.fields.map(function (obj) {
+            if (obj.id == item.id) {
+                obj.value = item.value;
+            }
+        });
+
+        this.setState({form: fm});
     },
     render: function () {
         var fm = this.state.form;
+        var data = this.state.data;
         var fields = fm.fields.map(function (obj) {
             var key = fm.id + "-" + obj.id;
             var lblCss = "col-sm-3";
@@ -93,10 +96,15 @@ var AjaxForm = React.createClass({
                     return (<input value={obj.value} key={key} type="hidden"/>);
                 case "text":
                 case "email":
-                case "password":
                     return (
                         <Input id={obj.id} value={obj.value} key={key} type={obj.type} placeholder={obj.placeholder}
-                               label={obj.name}
+                               label={obj.label+":"}
+                               onChange={this.handleChange}
+                               labelClassName={lblCss} wrapperClassName={fldCss}/>);
+                case "password":
+                    return (
+                        <Input id={obj.id} key={key} type={obj.type} placeholder={obj.placeholder}
+                               label={obj.label+":"}
                                onChange={this.handleChange}
                                labelClassName={lblCss} wrapperClassName={fldCss}/>);
                 default:
@@ -106,16 +114,6 @@ var AjaxForm = React.createClass({
 
         var buttons = fm.buttons.map(function (obj) {
             var key = fm.id + "-" + obj.id;
-            if (obj.id == "reset") {
-                return (<input key={key} type='reset' className={"btn btn-"+obj.style} value={obj.name}/>);
-            }
-            if (obj.id == "submit") {
-                return (
-                    <Button onClick={this.handleSubmit} id={key} key={key} bsStyle={obj.style}>
-                        {obj.name}
-                    </Button>
-                )
-            }
             return (
                 <Button id={key} key={key} bsStyle={obj.style}>
                     {obj.name}
@@ -144,16 +142,18 @@ var AjaxForm = React.createClass({
         return (
             <fieldset>
                 <legend className="glyphicon glyphicon-list">
-                    &nbsp;{fm.name}
+                    {fm.title}
                 </legend>
                 {message}
-                <form className='form-horizontal'>
+                <form className='form-horizontal' method={fm.method} action={fm.action}>
                     {fields}
                     <div className="form-group">
                         <div className="col-sm-offset-3 col-sm-9">
-                            <ButtonToolbar>
-                                {buttons}
-                            </ButtonToolbar>
+                            <ButtonInput groupClassName="col-sm-3" type="submit" bsStyle="primary" value={fm.submit}
+                                         onClick={this.handleSubmit}/>
+                            {buttons}
+                            <ButtonInput groupClassName="col-sm-3" type="reset" bsStyle="default" value={fm.reset}/>
+
                         </div>
                     </div>
                 </form>

@@ -25,7 +25,7 @@ var Footer = React.createClass({
         };
     },
     componentDidMount: function () {
-        this.get(Utils.url_for("/info", {keys: "copyright"}), function (rs) {
+        this.get("/info", {keys: "copyright"}, function (rs) {
             this.setState({
                 copyright: rs.copyright
             });

@@ -21,10 +21,11 @@ var NoSignInForm = React.createClass({
     },
     componentDidMount: function () {
         this.get(
-            "/users/bar",
+            "/personal/bar",
+            undefined,
             function (result) {
-                this.setState({links: result.data.slice(1)});
-            }.bind(this));
+                this.setState({links: result.links});
+            });
 
     },
     render: function () {
@@ -39,7 +40,7 @@ var NoSignInForm = React.createClass({
                             { this.state.links.map(function (obj) {
                                 return (
                                     <li key={"l-" + obj.url}>
-                                        <Link to={obj.url}>{obj.name}</Link>
+                                        <Link to={obj.url}>{obj.label}</Link>
                                     </li>
                                 )
                             })}
@@ -56,29 +57,29 @@ module.exports = {
     SignIn: React.createClass({
         mixins: [
             Navigation,
-            Reflux.connect(AuthStore, 'ticket')
+            Reflux.connect(AuthStore, 'token')
         ],
         onSubmit: function (data) {
-            AuthActions.signIn(data[0]);
+            AuthActions.signIn(data.token);
             this.transitionTo("home");
         },
         render: function () {
             return (
-                <NoSignInForm source="/users/sign_in" submit={this.onSubmit}/>
+                <NoSignInForm source="/personal/sign_in" submit={this.onSubmit}/>
             );
         }
     }),
     SignUp: React.createClass({
         render: function () {
             return (
-                <NoSignInForm source="/users/sign_up"/>
+                <NoSignInForm source="/personal/sign_up"/>
             );
         }
     }),
     ForgotPassword: React.createClass({
         render: function () {
             return (
-                <NoSignInForm source="/users/forgot_password"/>
+                <NoSignInForm source="/personal/forgot_password"/>
             );
         }
     }),
@@ -87,7 +88,7 @@ module.exports = {
             var token = Utils.gup("code");
             if (token) {
                 return (
-                    <NoSignInForm source={"/users/change_password/"+token}/>
+                    <NoSignInForm source={"/personal/change_password/"+token}/>
                 );
             }
             return (<div/>)
@@ -96,13 +97,13 @@ module.exports = {
     Confirm: React.createClass({
         render: function () {
             return (
-                <NoSignInForm source="/users/confirm"/>
+                <NoSignInForm source="/personal/confirm"/>
             );
         }
     }),
     Unlock: React.createClass({
         render: function () {
-            return (<NoSignInForm source="/users/unlock"/>);
+            return (<NoSignInForm source="/personal/unlock"/>);
         }
     }),
     Profile: React.createClass({//todo

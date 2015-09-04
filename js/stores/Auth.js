@@ -5,7 +5,7 @@ var $ = require("jquery");
 
 var Actions = require('../actions/Auth');
 
-var _key = "ticket";
+var _key = "token";
 
 var userStore = Reflux.createStore({
     listenables: Actions,

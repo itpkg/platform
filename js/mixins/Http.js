@@ -1,20 +1,40 @@
 "use strict";
 
 var $ = require("jquery");
+var URI = require('URIjs');
 
 var Http = {
-    get: function (url, success, error) {
+    url_for: function (url, params) {
+        if (!params) {
+            params = {};
+        }
+        params.locale = localStorage.lang;
+        return URI(url).query({}).query(params);
+    },
+    get: function (url, params, success, error, bearer) {
+
         if (error == undefined) {
             error = function () {
             };
         }
-        $.ajax({
-            url: this.url(url),
+
+        var args = {
+            url: this.url_for(url, params),
             success: success.bind(this),
             error: error.bind(this),
             type: "GET",
             dataType: "json"
-        });
+        };
+
+        if (bearer) {
+            var token = sessionStorage.token;
+            if (token) {
+                args.headers = {
+                    'Authorization': 'Bearer ' + token
+                };
+            }
+        }
+        $.ajax(args);
     },
     post: function (url, data, success, error) {
         if (error == undefined) {
@@ -22,7 +42,7 @@ var Http = {
             };
         }
         $.ajax({
-            url: this.url(url),
+            url: this.url_for(url),
             success: success.bind(this),
             error: error.bind(this),
             data: data,
@@ -30,9 +50,6 @@ var Http = {
             dataType: "json",
             contentType: "application/json; charset=utf-8"
         });
-    },
-    url: function (u) {
-        return u;
     }
 };
 

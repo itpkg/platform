@@ -13,11 +13,6 @@ var zhCN = require("./i18n/zh_CN");
 var enUS = require("./i18n/en_US");
 
 $(function () {
-
-    $(document).ajaxSend(function (e, xhr, options) {
-        xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem("ticket"));
-    });
-
     var lang;
 
     switch (localStorage.lang) {
