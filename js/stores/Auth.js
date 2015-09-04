@@ -22,15 +22,9 @@ var userStore = Reflux.createStore({
         this.trigger(this.token);
     },
     onSignOut: function () {
-        $.get(
-            "/users/sign_out",
-            function () {
-                sessionStorage.removeItem(_key);
-                this.token = undefined;
-                this.trigger(this.token);
-            }.bind(this),
-            "json"
-        );
+        sessionStorage.removeItem(_key);
+        this.token = undefined;
+        this.trigger(this.token);
     }
 });
 

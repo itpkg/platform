@@ -34,6 +34,11 @@ var Header = React.createClass({
             });
         });
 
+        if(this.state.token){
+            console.log("login");
+        }else{
+            console.log("no login");
+        }
 
         this.get("/personal/bar", undefined, function (rs) {
             this.setState({

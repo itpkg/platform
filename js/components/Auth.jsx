@@ -61,7 +61,7 @@ module.exports = {
         ],
         onSubmit: function (data) {
             AuthActions.signIn(data.token);
-            // todo this.transitionTo("home");
+            //this.transitionTo("home");
             window.location.href = "/";
         },
         render: function () {
@@ -82,7 +82,7 @@ module.exports = {
                 undefined,
                 function (result) {
                     AuthActions.signOut();
-                    // todo this.transitionTo("home");
+                    //this.transitionTo("home");
                     window.location.href = "/";
                 }, undefined, true);
         },
