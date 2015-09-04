@@ -16,6 +16,7 @@ var Routes = (
 
         <Route name="personal.sign_in" path="/personal/sign_in" handler={ Auth.SignIn }/>
         <Route name="personal.sign_up" path="/personal/sign_up" handler={ Auth.SignUp }/>
+        <Route name="personal.sign_out" path="/personal/sign_out" handler={ Auth.SignOut }/>
         <Route name="personal.forgot_password" path="/personal/forgot_password" handler={ Auth.ForgotPassword }/>
         <Route name="personal.change_password" path="/personal/change_password" handler={ Auth.ChangePassword }/>
         <Route name="personal.confirm" path="/personal/confirm" handler={ Auth.Confirm }/>

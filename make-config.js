@@ -17,9 +17,8 @@ module.exports = function (options) {
             "react-bootstrap",
             "react-router",
             "react-router-bootstrap",
-            "react-localstorage",
             "react-intl",
-            "js-cookie",
+            //"fbemitter",
             "js-base64",
             "jwt-decode"
         ]

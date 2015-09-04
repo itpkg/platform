@@ -12,22 +12,22 @@ var userStore = Reflux.createStore({
     getInitialState: function () {
         var val = sessionStorage.getItem(_key);
         if (val) {
-            this.ticket = val;
+            this.token = val;
         }
-        return this.ticket;
+        return this.token;
     },
-    onSignIn: function (ticket) {
-        sessionStorage.setItem(_key, ticket);
-        this.ticket = ticket;
-        this.trigger(this.ticket);
+    onSignIn: function (token) {
+        sessionStorage.setItem(_key, token);
+        this.token = token;
+        this.trigger(this.token);
     },
     onSignOut: function () {
         $.get(
             "/users/sign_out",
             function () {
                 sessionStorage.removeItem(_key);
-                this.ticket = undefined;
-                this.trigger(this.ticket);
+                this.token = undefined;
+                this.trigger(this.token);
             }.bind(this),
             "json"
         );

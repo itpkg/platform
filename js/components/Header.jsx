@@ -3,8 +3,10 @@
 var React = require("react");
 var Reflux = require('reflux');
 var T = require('react-intl');
+
 var HttpMixin = require("../mixins/Http");
 var Utils = require("../Utils");
+var AuthStore = require("../stores/Auth");
 
 import {Router,Link,Navigation} from 'react-router'
 import {ReactBootstrap, Navbar, Nav, NavDropdown, MenuItem} from "react-bootstrap"
@@ -14,6 +16,7 @@ var Auth = require("./Auth");
 var Header = React.createClass({
     mixins: [
         Navigation,
+        Reflux.connect(AuthStore, 'token'),
         HttpMixin
     ],
     getInitialState: function () {
@@ -30,15 +33,19 @@ var Header = React.createClass({
                 navLinks: rs.links
             });
         });
+
+
         this.get("/personal/bar", undefined, function (rs) {
             this.setState({
                 barName: rs.label,
                 barLinks: rs.links
             });
         }, undefined, true);
+
     },
     render: function () {
         document.title = this.state.navName;
+
         return (
             <Navbar brand={<Link to="home"> {this.state.navName} </Link>} inverse fixedTop toggleNavKey={0}>
                 <Nav right> {}

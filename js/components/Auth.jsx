@@ -61,11 +61,34 @@ module.exports = {
         ],
         onSubmit: function (data) {
             AuthActions.signIn(data.token);
-            this.transitionTo("home");
+            // todo this.transitionTo("home");
+            window.location.href = "/";
         },
         render: function () {
             return (
                 <NoSignInForm source="/personal/sign_in" submit={this.onSubmit}/>
+            );
+        }
+    }),
+    SignOut: React.createClass({
+        mixins: [
+            Navigation,
+            HttpMixin,
+            Reflux.connect(AuthStore, 'token')
+        ],
+        componentDidMount: function () {
+            this.get(
+                "/personal/sign_out",
+                undefined,
+                function (result) {
+                    AuthActions.signOut();
+                    // todo this.transitionTo("home");
+                    window.location.href = "/";
+                }, undefined, true);
+        },
+        render: function () {
+            return (
+                <div/>
             );
         }
     }),
