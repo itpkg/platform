@@ -4,6 +4,7 @@ var React = require('react');
 import {Router, Route, DefaultRoute} from "react-router";
 
 var Auth = require("./components/Auth");
+var Email = require("./components/Email");
 var Site = require("./components/Site");
 var Root = require("./components/Root");
 var Message = require("./components/Message");
@@ -24,6 +25,8 @@ var Routes = (
         <Route name="personal.profile" path="/personal/profile" handler={ Auth.Profile }/>
         <Route name="personal.self" path="/personal/self" handler={ Auth.Self }/>
         <Route name="message.show" path="/show" handler={ Message }/>
+
+        <Route name="email.domains" path="/email/domains" handler={Email.Domains}/>
     </Route>
 );
 

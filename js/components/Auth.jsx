@@ -130,11 +130,13 @@ module.exports = {
             return (
                 <div className="row">
                     <div className="col-md-12 ">
-                    <W.Back />
-                        </div>
+                        <p className="pull-right">
+                            <W.Back />
+                        </p>
+                    </div>
                     <div className="col-md-12 ">
-                    <W.Form source="/personal/profile" bearer={true}/>
-                        </div>
+                        <W.Form source="/personal/profile" bearer={true}/>
+                    </div>
                 </div>
             );
         }

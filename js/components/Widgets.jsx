@@ -3,7 +3,7 @@
 var React = require("react");
 var T = require('react-intl');
 import {Navigation} from 'react-router'
-import {Nav, NavItem,NavDropdown,MenuItem, ReactBootstrap, Input, Button,ButtonInput, ButtonToolbar, Alert} from "react-bootstrap"
+import {Nav, Table, NavItem,NavDropdown,MenuItem, ReactBootstrap, Input, Button,ButtonInput, ButtonToolbar, Alert} from "react-bootstrap"
 
 var HttpMixin = require("../mixins/Http");
 
@@ -172,9 +172,6 @@ var AjaxForm = React.createClass({
 
 var AjaxNavBar = React.createClass({
     mixins: [HttpMixin],
-    handleSelect(selectedKey) {
-        console.log(selectedKey);
-    },
     getInitialState: function () {
         return {links: []};
     },
@@ -220,20 +217,90 @@ var AjaxNavBar = React.createClass({
 
 var Back = React.createClass({
     mixins: [Navigation, T.IntlMixin],
-    go_back: function(){
+    go_back: function () {
         window.history.back();
     },
     render: function () {
         return (
-                <p className="pull-right">
-                    <Button onClick={this.go_back} bsStyle='success'>{this.getIntlMessage('links.go_back')}</Button>
-                </p>
+            <Button onClick={this.go_back} bsStyle='success'>{this.getIntlMessage('links.go_back')}</Button>
+
         )
     }
 });
 
+
+var AjaxTable = React.createClass({
+    mixins: [Navigation, HttpMixin],
+    getInitialState: function () {
+        return {table: {header: []}};
+    },
+    loadTable: function () {
+        this.get(
+            this.props.source,
+            undefined,
+            function (result) {
+                if (this.isMounted()) {
+                    this.setState({table: result});
+                }
+            },
+            undefined,
+            this.props.bearer
+        );
+    },
+    componentDidMount: function () {
+        this.loadTable();
+    },
+    onNew: function () {
+        React.render(<AjaxForm source={this.state.table.action+"/new"} submit={this.loadTable} bearer={true}/>,
+            document.getElementById(this.tid("fm")));
+    },
+    onRefresh: function () {
+        this.loadTable();
+        //this.transitionTo(this.state.table.action);
+    },
+    tid: function (s) {
+        return "table-" + s + "-" + this.state.table.id;
+    },
+    render: function () {
+        var newW;
+        if (this.state.table.new) {
+            newW = (<Button onClick={this.onNew} bsStyle="primary">{this.state.table.new}</Button>)
+        } else {
+            newW = (<a/>)
+        }
+        return (
+            <div className="col-md-12 ">
+                <p className="pull-right">
+                    {newW}
+                    <Button onClick={this.onRefresh} bsStyle="warning">{this.state.table.refresh}</Button>
+                    <Back />
+                </p>
+                <br/>
+
+                <p id={this.tid("fm")}></p>
+
+                <p>
+                    <Table striped bordered condensed hover>
+                        <thead>
+                        <tr>
+                            {this.state.table.header.map(function (obj) {
+                                return (<th key={"th-"+obj.label} width={obj.width}>{obj.label}</th>)
+                            })}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </Table>
+                </p>
+            </div>
+        );
+    }
+});
+
+
 module.exports = {
     Form: AjaxForm,
     NavBar: AjaxNavBar,
+    Table: AjaxTable,
     Back: Back
 };
