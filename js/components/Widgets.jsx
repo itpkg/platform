@@ -232,7 +232,7 @@ var Back = React.createClass({
 var AjaxTable = React.createClass({
     mixins: [Navigation, HttpMixin],
     getInitialState: function () {
-        return {table: {header: []}};
+        return {table: {header: [], body: []}};
     },
     loadTable: function () {
         this.get(
@@ -251,23 +251,67 @@ var AjaxTable = React.createClass({
         this.loadTable();
     },
     onNew: function () {
-        React.render(<AjaxForm source={this.state.table.action+"/new"} submit={this.loadTable} bearer={true}/>,
+        React.render(<AjaxForm source={this.state.table.action+"/new"} bearer={true}/>,
             document.getElementById(this.tid("fm")));
     },
     onRefresh: function () {
         this.loadTable();
-        //this.transitionTo(this.state.table.action);
+    },
+    onRemove: function (id) {
+        if (confirm(this.state.table.messages[0])) {
+            this.delete(
+                this.props.source + "/" + id,
+                function (result) {
+                    alert(result.title);
+                    if (result.ok) {
+                        this.loadTable();
+                    }
+                },
+                undefined,
+                this.props.bearer
+            );
+        }
     },
     tid: function (s) {
         return "table-" + s + "-" + this.state.table.id;
     },
     render: function () {
         var newW;
-        if (this.state.table.new) {
-            newW = (<Button onClick={this.onNew} bsStyle="primary">{this.state.table.new}</Button>)
+        var table = this.state.table;
+
+        if (table.new) {
+            //todo  add onclick
+            newW = (<Button onClick={this.onNew} bsStyle="primary">{table.new}</Button>)
         } else {
             newW = (<a/>)
         }
+        var removeBtn = function (row) {
+            var remove = table.remove;
+            if (remove) {
+                return (<Button onClick={this.onRemove.bind(this, row[0])} bsStyle="danger">{remove}</Button>)
+            } else {
+                return (<a></a>)
+            }
+
+        }.bind(this);
+        var viewBtn = function (row) {
+            var view = table.view;
+            if (view) {
+                //todo add onclick
+                return (<Button bsStyle="success">{view}</Button>)
+            } else {
+                return (<a></a>)
+            }
+
+        };
+        var editBtn = function (row) {
+            var edit = table.edit;
+            if (edit) {
+                return (<Button bsStyle="warning">{edit}</Button>)
+            } else {
+                return (<a></a>)
+            }
+        };
         return (
             <div className="col-md-12 ">
                 <p className="pull-right">
@@ -286,9 +330,28 @@ var AjaxTable = React.createClass({
                             {this.state.table.header.map(function (obj) {
                                 return (<th key={"th-"+obj.label} width={obj.width}>{obj.label}</th>)
                             })}
+                            <th witdh="20%">{this.state.table.manage}</th>
                         </tr>
                         </thead>
                         <tbody>
+                        {
+                            this.state.table.body.map(function (row, rdx) {
+                                return (
+                                    <tr key={"tr-"+rdx}>
+                                        {
+                                            row.map(function (cell, cdx) {
+                                                return (<td key={"td-"+rdx+"-"+cdx}>{cell}</td>)
+                                            })
+                                        }
+                                        <td>
+                                            {viewBtn(row)}
+                                            {editBtn(row)}
+                                            {removeBtn(row)}
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
                         </tbody>
                     </Table>
                 </p>

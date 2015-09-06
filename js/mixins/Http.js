@@ -54,7 +54,22 @@ var Http = {
             contentType: "application/json; charset=utf-8"
         };
         this.check_token(bearer, args);
-        //console.log(args);
+        $.ajax(args);
+    },
+    delete: function (url, success, error, bearer) {
+        if (error == undefined) {
+            error = function () {
+            };
+        }
+        var args = {
+            url: this.url_for(url),
+            success: success.bind(this),
+            error: error.bind(this),
+            type: "DELETE",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8"
+        };
+        this.check_token(bearer, args);
         $.ajax(args);
     }
 };
