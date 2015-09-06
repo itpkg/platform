@@ -20,5 +20,29 @@ module.exports = {
                 </div>
             );
         }
+    }),
+    Users: React.createClass({
+        mixins: [
+            Navigation
+        ],
+        render: function () {
+            return (
+                <div className="row">
+                    <W.Table source="/email/users" bearer={true}/>
+                </div>
+            );
+        }
+    }),
+    Aliases: React.createClass({
+        mixins: [
+            Navigation
+        ],
+        render: function () {
+            return (
+                <div className="row">
+                    <W.Table source="/email/aliases" bearer={true}/>
+                </div>
+            );
+        }
     })
 };

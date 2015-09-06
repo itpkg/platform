@@ -35,6 +35,16 @@ var AjaxForm = React.createClass({
         var fm = this.state.form;
         fm.fields.map(function (obj) {
             data[obj.id] = obj.value;
+
+            //switch(obj.type){
+            //case "select":
+            //    console.log("select"+obj.value);
+            //    break;
+            //    default:
+            //    data[obj.id] = obj.value;
+            //        break;
+            //}
+
         });
         switch (fm.method) {
             case "POST":
@@ -43,17 +53,16 @@ var AjaxForm = React.createClass({
                     JSON.stringify(data),
                     function (result) {
                         if (result.ok) {
+                            this.setState({
+                                message: {
+                                    title: result.title,
+                                    style: "success",
+                                    items: []
+                                }
+                            });
                             var clk = this.props.submit;
                             if (clk) {
-                                clk(result.data);
-                            } else {
-                                this.setState({
-                                    message: {
-                                        title: result.title,
-                                        style: "success",
-                                        items: result.data
-                                    }
-                                });
+                                clk(result);
                             }
                         } else {
                             this.setState({
@@ -84,6 +93,7 @@ var AjaxForm = React.createClass({
             }
         });
 
+        //console.log(item.id+" "+item.value);
         this.setState({form: fm});
     },
     render: function () {
@@ -101,19 +111,42 @@ var AjaxForm = React.createClass({
                     return (<input value={obj.value} key={key} type="hidden"/>);
                 case "text":
                 case "email":
-                    return (
-                        <Input id={obj.id} value={obj.value} key={key} type={obj.type} placeholder={obj.placeholder}
-                               label={obj.label+":"}
-                               onChange={this.handleChange}
-                               labelClassName={lblCss} wrapperClassName={fldCss}/>);
+                    if (obj.readonly) {
+                        return (
+                            <Input id={obj.id} value={obj.value} key={key} type={obj.type} placeholder={obj.placeholder}
+                                   label={obj.label+":"}
+                                   onChange={this.handleChange}
+                                   readOnly
+                                   labelClassName={lblCss} wrapperClassName={fldCss}/>);
+                    } else {
+                        return (
+                            <Input id={obj.id} value={obj.value} key={key} type={obj.type} placeholder={obj.placeholder}
+                                   label={obj.label+":"}
+                                   onChange={this.handleChange}
+                                   labelClassName={lblCss} wrapperClassName={fldCss}/>);
+                    }
                 case "password":
                     return (
                         <Input id={obj.id} key={key} type={obj.type} placeholder={obj.placeholder}
                                label={obj.label+":"}
                                onChange={this.handleChange}
                                labelClassName={lblCss} wrapperClassName={fldCss}/>);
+                case "select":
+                    return (
+                        <Input id={obj.id} type="select" key={key} value={obj.value}
+                               label={obj.label+":"}
+                               onChange={this.handleChange}
+                               labelClassName={lblCss} wrapperClassName={fldCss}
+                            >
+                            {
+                                obj.options.map(function (opt) {
+                                    return (<option value={opt.id}>{opt.label}</option>)
+                                })
+                            }
+                        </Input>
+                    );
                 default:
-                    return (<input key={key}/>)
+                    return (<input type="hidden" key={key}/>)
             }
         }.bind(this));
 
@@ -250,11 +283,18 @@ var AjaxTable = React.createClass({
     componentDidMount: function () {
         this.loadTable();
     },
+    onForm: function (result) {
+        if (result.ok) {
+            this.loadTable();
+        }
+    },
     onNew: function () {
-        React.render(<AjaxForm source={this.state.table.action+"/new"} bearer={true}/>,
+        this.clearForm();
+        React.render(<AjaxForm submit={this.onForm} source={this.state.table.action+"/new"} bearer={true}/>,
             document.getElementById(this.tid("fm")));
     },
     onRefresh: function () {
+        this.clearForm();
         this.loadTable();
     },
     onRemove: function (id) {
@@ -272,6 +312,14 @@ var AjaxTable = React.createClass({
             );
         }
     },
+    clearForm: function () {
+        React.unmountComponentAtNode(document.getElementById(this.tid("fm")));
+    },
+    onEdit: function (id) {
+        this.clearForm();
+        React.render(<AjaxForm submit={this.onForm} source={this.state.table.action+"/edit/"+id} bearer={true}/>,
+            document.getElementById(this.tid("fm")));
+    },
     tid: function (s) {
         return "table-" + s + "-" + this.state.table.id;
     },
@@ -280,7 +328,6 @@ var AjaxTable = React.createClass({
         var table = this.state.table;
 
         if (table.new) {
-            //todo  add onclick
             newW = (<Button onClick={this.onNew} bsStyle="primary">{table.new}</Button>)
         } else {
             newW = (<a/>)
@@ -303,31 +350,33 @@ var AjaxTable = React.createClass({
                 return (<a></a>)
             }
 
-        };
+        }.bind(this);
         var editBtn = function (row) {
             var edit = table.edit;
             if (edit) {
-                return (<Button bsStyle="warning">{edit}</Button>)
+                return (<Button onClick={this.onEdit.bind(this, row[0])} bsStyle="warning">{edit}</Button>)
             } else {
                 return (<a></a>)
             }
-        };
+        }.bind(this);
         return (
             <div className="col-md-12 ">
                 <p className="pull-right">
                     {newW}
-                    <Button onClick={this.onRefresh} bsStyle="warning">{this.state.table.refresh}</Button>
+                    <Button onClick={this.onRefresh} bsStyle="warning">{table.refresh}</Button>
                     <Back />
                 </p>
                 <br/>
 
                 <p id={this.tid("fm")}></p>
+                <fieldset>
+                    <legend>{table.title}</legend>
 
-                <p>
+
                     <Table striped bordered condensed hover>
                         <thead>
                         <tr>
-                            {this.state.table.header.map(function (obj) {
+                            {table.header.map(function (obj) {
                                 return (<th key={"th-"+obj.label} width={obj.width}>{obj.label}</th>)
                             })}
                             <th witdh="20%">{this.state.table.manage}</th>
@@ -335,7 +384,7 @@ var AjaxTable = React.createClass({
                         </thead>
                         <tbody>
                         {
-                            this.state.table.body.map(function (row, rdx) {
+                            table.body.map(function (row, rdx) {
                                 return (
                                     <tr key={"tr-"+rdx}>
                                         {
@@ -354,7 +403,8 @@ var AjaxTable = React.createClass({
                         }
                         </tbody>
                     </Table>
-                </p>
+
+                </fieldset>
             </div>
         );
     }

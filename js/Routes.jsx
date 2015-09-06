@@ -27,6 +27,8 @@ var Routes = (
         <Route name="message.show" path="/show" handler={ Message }/>
 
         <Route name="email.domains" path="/email/domains" handler={Email.Domains}/>
+        <Route name="email.users" path="/email/users" handler={Email.Users}/>
+        <Route name="email.aliases" path="/email/aliases" handler={Email.Aliases}/>
     </Route>
 );
 

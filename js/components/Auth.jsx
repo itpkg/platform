@@ -56,10 +56,12 @@ module.exports = {
         mixins: [
             Navigation
         ],
-        onSubmit: function (data) {
-            sessionStorage.token = data[0];
-            window.location.href = "/";
-            //this.transitionTo("home");
+        onSubmit: function (result) {
+            if (result.ok) {
+                sessionStorage.token = result.data[0];
+                window.location.href = "/";
+                //this.transitionTo("home");
+            }
         },
         render: function () {
             return (
