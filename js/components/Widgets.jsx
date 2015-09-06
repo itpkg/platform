@@ -140,7 +140,7 @@ var AjaxForm = React.createClass({
                             >
                             {
                                 obj.options.map(function (opt) {
-                                    return (<option value={opt.id}>{opt.label}</option>)
+                                    return (<option key={"opt-"+opt.id} value={opt.id}>{opt.label}</option>)
                                 })
                             }
                         </Input>
