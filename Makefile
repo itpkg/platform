@@ -14,7 +14,7 @@ clean:
 
 
 publish:
-	for i in base cms email platform; do \
+	for i in base cms email platform deploy; do \
 		cd ../$$i && git checkout master && git merge development && git push && git checkout development; \
 	done
 
