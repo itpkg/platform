@@ -5,6 +5,7 @@ build:
 	npm run release
 	go build -o $(target)/itpkg -ldflags "-s" app.go
 	-cp -r locales assets .vars config.yml $(target)/
+	-rm release/assets/stats.json
 	sed -i 's/development/production/g' $(target)/.vars
 
 
