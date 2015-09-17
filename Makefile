@@ -14,8 +14,16 @@ clean:
 	-rm -r $(target) assets
 
 
+
+format:
+	for i in web base cms email platform; do \
+		cd ../$$i && gofmt -w *.go; \
+	done
+
+
+
 publish:
-	for i in base cms email platform deploy; do \
+	for i in web base cms email platform deploy; do \
 		cd ../$$i && git checkout master && git merge development && git push && git checkout development; \
 	done
 
