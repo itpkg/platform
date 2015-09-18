@@ -25,7 +25,7 @@ IT-PACKAGE(go version)
     ./itpkg server
 
 ### Upgrade
-    go get -u all
+    make update
 
     
 

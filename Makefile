@@ -1,17 +1,25 @@
-target=release
+target = releases/$(shell date +%Y%m%d%H%M%S)
 
 build:
-	npm install
-	npm run release
+	mkdir -pv $(target)/locales
+	npm run build
 	go build -o $(target)/itpkg -ldflags "-s" app.go
-	-cp -r locales assets .vars config.yml $(target)/
-	-rm release/assets/stats.json
+	-cp -r public .vars config.yml $(target)/
+	-rm ${target}/public/stats.json
+	for i in base; do \
+		cp -v ../$$i/locales.properties $(target)/locales/$$i.properties; \
+	done
 	sed -i 's/development/production/g' $(target)/.vars
+
+
+update:
+	go get -u all
+	npm install
 
 
 
 clean:
-	-rm -r $(target) assets
+	-rm -r releases public
 
 
 
