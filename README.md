@@ -1,24 +1,55 @@
-# README
+Platform - A base web application.
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## System dependencies
+### Install rbenv
+    sudo apt-get install -y git build-essential make libssl-dev libreadline-dev
 
-* Ruby version
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    git clone https://github.com/rbenv/rbenv-vars.git ~/.rbenv/plugins/rbenv-vars
 
-* System dependencies
+    # Modify your ~/.zshrc file instead of ~/.bash_profile
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"\neval "$(rbenv init -)"' >> ~/.bash_profile 
+    
+### Install ruby(by rbenv)
+    rbenv install -l    
+    CONFIGURE_OPTS="--disable-install-doc" rbenv install 2.3.1
+    rbenv local 2.3.1
+    gem install bundler
+    
+### Install nodejs
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+       
+### Clone code
+    git clone https://github.com/itpkg/reading.git
+    cd reading
+    bundler install
+    npm install
+    
+## Database creation
+    psql -U postgres
+    CREATE DATABASE db-name WITH ENCODING=UTF8;
+    CREATE USER user-name WITH PASSWORD 'change-me';
+    GRANT ALL PRIVILEGES ON DATABASE db-name TO user-name;
+    
+## Configuration files
 
-* Configuration
+* .rbenv-vars
+* config/database.yml
+* config/sidekiq.yml
+* config/deploy/production.rb
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Deployment instructions
+### deploy
+    cap production deploy
+### upload puma.conf
+    cap production puma:config
+###upload nginx config file
+    cap production puma:nginx_config
+    
+## Notes
+### rails
+    rails g model Aaa --no-test-framework
