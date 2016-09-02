@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   include RailsSettings::Extend
-  
+
   rolify
+
+  has_many :logs
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
