@@ -1,6 +1,8 @@
 <% if notice %>
-    <p class="notice"><%= notice %></p>
+    <br/>
+    <%= render 'shared/alert', style:'success', title:t('home.success'), body: notice %>
 <% end %>
 <% if alert %>
-    <p class="alert"><%= alert %></p>
+    <br/>
+    <%= render 'shared/alert', style:'danger', title:t('home.fail'), body: alert %>
 <% end %>
