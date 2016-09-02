@@ -19,3 +19,5 @@
 
 # my
 /.idea
+/node_modules
+/public/assets/
