@@ -29,11 +29,9 @@ ActiveRecord::Schema.define(version: 20160902220014) do
   end
 
   create_table "notices", force: :cascade do |t|
-    t.text     "content",                             null: false
-    t.string   "lang",       limit: 5, default: "en", null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["lang"], name: "index_notices_on_lang", using: :btree
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|

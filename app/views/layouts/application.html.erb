@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Platform</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title><%= @title %>-<%= site_info :sub_title %>-<%= site_info :title %></title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+
+<%= render 'shared/header' %>
+
+<div class="container">
+  <%= render 'shared/devise_notices' %>
+  <br/>
+  <%= yield %>
+  <%= render 'shared/footer' %>
+</div>
+
+</body>
 </html>

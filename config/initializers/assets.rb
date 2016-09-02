@@ -22,3 +22,5 @@ Rails.application.config.assets.precompile << %r(bootstrap-sass/assets/fonts/boo
 ::Sass::Script::Value::Number.precision = [8, ::Sass::Script::Value::Number.precision].max
 
 Rails.application.config.assets.precompile << 'marked/lib/marked.js'
+
+%w(us cn).each {|lang| Rails.application.config.assets.precompile << "famfamfam-flags/dist/png/#{lang}.png"}
