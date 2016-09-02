@@ -21,3 +21,4 @@
 /.idea
 /node_modules
 /public/assets/
+/.rbenv-vars
