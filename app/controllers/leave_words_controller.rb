@@ -12,15 +12,15 @@ class LeaveWordsController < ApplicationController
 
   def destroy
     lw = LeaveWord.find params[:id]
+    authorize lw, :destroy?
     lw.destroy
-    render :index
+
+    redirect_to leave_words_path
   end
 
   def index
-    if current_user && curr_user.is_admin?
-      @items = LeaveWord.order(id: :desc).page params[:page]
-    else
-      head :forbidden
-    end
+    @items = LeaveWord.order(id: :desc).page params[:page]
+    authorize @items, :index?
+    render layout: 'dashboard'
   end
 end
