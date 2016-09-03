@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /en|zh-CN/ do
     resources :notices
-    resources :leave_words
+    resources :leave_words, only:[:create, :destroy, :index]
 
     get 'home', to: 'home#index'
     get 'home/about'
